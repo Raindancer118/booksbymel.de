@@ -1,0 +1,13 @@
+[
+  {
+    "title": "Ophelia",
+    "slug": "ophelia",
+    "blurb": "Ein Name, den sie sich selbst gegeben hat. Weil er nach Hoffnung klang, als nichts mehr übrig war.",
+    "cover": "/images/covers/Ophelia.jpg",
+    "isbn": "979-8294727277",
+    "retailers": [
+      { "name": "Amazon.de", "url": "https://www.amazon.de/Ophelia-Melanie-Thason/dp/B0FKM5Q4MQ/" }
+    ],
+    "publicationDate": "30. Juli 2025"
+  }
+]

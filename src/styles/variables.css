@@ -1,0 +1,14 @@
+:root{
+  --bg: #FAF7F2;
+  --fg: #2A2A2A;
+  --muted: #5E5E5E;
+  --accent: #7A5CFA;
+  --accent-contrast: #FFFFFF;
+  --radius: 14px;
+  --maxw: 1120px;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#0F0E12; --fg:#E6E1D9; --muted:#B6B0A6; --accent:#C9A27A; --accent-contrast:#0F0E12;
+  }
+}

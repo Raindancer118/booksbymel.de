@@ -1,5 +1,7 @@
 node_modules
 .next
-.idea
+.out
 dist
 .env
+.DS_Store
+.idea
