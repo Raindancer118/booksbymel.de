@@ -26,14 +26,17 @@ export default function BookDetailPage({ params }: Props){
   return (
     <main className="container">
       <Seo title={book.title} description={book.blurb} jsonLd={jsonLd} ogImage="/images/og/default.jpg" />
-      <div className="grid" style={{gridTemplateColumns:'minmax(260px, 360px) 1fr', alignItems:'start'}}>
+      <div
+        className="grid"
+        style={{ gridTemplateColumns: 'minmax(200px, 320px) 1fr', alignItems: 'start' }}
+      >
         <Image
           src={book.cover}
           alt={`Cover: ${book.title}`}
-          width={480}
-          height={720}
-          sizes="(max-width: 900px) 60vw, 420px"
-          style={{ width: "100%", height: "auto", borderRadius: "14px", objectFit: "cover" }}
+          width={360}
+          height={540}                                 // 2:3
+          sizes="(max-width: 900px) 65vw, 320px"
+          className="book-cover-lg"
           priority={false}
         />
         <div>

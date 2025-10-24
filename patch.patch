@@ -1,0 +1,111 @@
+diff --git a/src/styles/globals.css b/src/styles/globals.css
+index 1f3b2e1..9e7a0d4 100644
+--- a/src/styles/globals.css
++++ b/src/styles/globals.css
+@@ -15,3 +15,17 @@ img{max-width:100%;height:auto}
+ .container{max-width:var(--maxw);margin-inline:auto;padding:24px}
+ .button{display:inline-block;padding:12px 18px;border-radius:var(--radius);background:var(--accent);color:var(--accent-contrast);font-weight:600}
+ .grid{display:grid;gap:20px}
++
++/* Cover-Sizing (kleiner & konsistent) */
++.book-cover{
++  width:100%;
++  height:auto;
++  max-height:300px;          /* Kartenansicht */
++  border-radius:12px;
++  object-fit:cover;
++  aspect-ratio: 2 / 3;
++}
++.book-cover-lg{
++  width:100%;
++  max-width:320px;           /* Detailseite linke Spalte */
++  aspect-ratio: 2 / 3; height:auto; border-radius:14px; object-fit:cover;
++}
+diff --git a/src/components/BookCard.tsx b/src/components/BookCard.tsx
+index c7de8b1..2a6a3f0 100644
+--- a/src/components/BookCard.tsx
++++ b/src/components/BookCard.tsx
+@@ -1,26 +1,26 @@
+ import Link from "next/link";
+ import type { Book } from "@/lib/types";
+ import Image from "next/image";
+
+ export default function BookCard({ book }: { book: Book }){
+   const firstRetailer = book.retailers?.[0]?.url ?? "#";
+   return (
+     <article className="card">
+-      <Image
+-        src={book.cover}
+-        alt={`Cover: ${book.title}`}
+-        width={320}
+-        height={480}
+-        sizes="(max-width: 600px) 45vw, (max-width: 1200px) 25vw, 240px"
+-        style={{ width: "100%", height: "auto", borderRadius: "12px", objectFit: "cover" }}
+-        priority={false}
+-      />
++      <Image
++        src={book.cover}
++        alt={`Cover: ${book.title}`}
++        width={220}
++        height={330}
++        sizes="(max-width: 600px) 40vw, (max-width: 1200px) 22vw, 220px"
++        className="book-cover"
++        priority={false}
++      />
+       <h3 style={{marginTop:12}}>{book.title}</h3>
+       <p style={{color:'var(--muted)'}}>{book.blurb}</p>
+       <div style={{display:'flex', gap:10, marginTop:10}}>
+         <Link className="button" href={`/buch/${book.slug}`}>Mehr</Link>
+         <Link className="button ghost" href={firstRetailer}>Kaufen</Link>
+       </div>
+     </article>
+   );
+ }
+diff --git a/src/app/buch/[slug]/page.tsx b/src/app/buch/[slug]/page.tsx
+index 8f1b4a2..1b3a6a9 100644
+--- /src/app/buch/[slug]/page.tsx
++++ /src/app/buch/[slug]/page.tsx
+@@ -1,6 +1,7 @@
+ import { getBook, getBooks } from "@/lib/books";
+ import RetailerButtons from "@/components/RetailerButtons";
+ import Seo from "@/components/Seo";
+ import Image from "next/image";
+
+ type Props = { params: { slug: string } };
+
+@@ -26,14 +27,17 @@ export default function BookDetailPage({ params }: Props){
+   return (
+     <main className="container">
+       <Seo title={book.title} description={book.blurb} jsonLd={jsonLd} ogImage="/images/og/default.jpg" />
+-      <div className="grid" style={{gridTemplateColumns:'minmax(260px, 360px) 1fr', alignItems:'start'}}>
+-        <Image
+-          src={book.cover}
+-          alt={`Cover: ${book.title}`}
+-          width={480}
+-          height={720}
+-          sizes="(max-width: 900px) 60vw, 420px"
+-          style={{ width: "100%", height: "auto", borderRadius: "14px", objectFit: "cover" }}
+-          priority={false}
+-        />
++      <div
++        className="grid"
++        style={{ gridTemplateColumns: 'minmax(200px, 320px) 1fr', alignItems: 'start' }}
++      >
++        <Image
++          src={book.cover}
++          alt={`Cover: ${book.title}`}
++          width={360}
++          height={540}
++          sizes="(max-width: 900px) 65vw, 320px"
++          className="book-cover-lg"
++          priority={false}
++        />
+         <div>
+           <h1>{book.title}</h1>
+           <p style={{color:'var(--muted)'}}>{book.blurb}</p>
+           {book.retailers && <RetailerButtons links={book.retailers} />}
+         </div>
+       </div>
+     </main>
+   );
+ }

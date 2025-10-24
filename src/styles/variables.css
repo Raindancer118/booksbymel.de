@@ -6,9 +6,10 @@
   --accent-contrast: #FFFFFF;
   --radius: 14px;
   --maxw: 1120px;
+  --ophelia-green: #0c170f;
 }
 @media (prefers-color-scheme: dark){
   :root{
-    --bg:#0F0E12; --fg:#E6E1D9; --muted:#B6B0A6; --accent:#C9A27A; --accent-contrast:#0F0E12;
+    --bg: #142514; --fg:#E6E1D9; --muted:#B6B0A6; --accent: rgb(255, 255, 255); --accent-contrast: rgb(19, 30, 21);
   }
 }
