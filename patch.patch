@@ -1,111 +1,189 @@
-diff --git a/src/styles/globals.css b/src/styles/globals.css
-index 1f3b2e1..9e7a0d4 100644
---- a/src/styles/globals.css
-+++ b/src/styles/globals.css
-@@ -15,3 +15,17 @@ img{max-width:100%;height:auto}
- .container{max-width:var(--maxw);margin-inline:auto;padding:24px}
- .button{display:inline-block;padding:12px 18px;border-radius:var(--radius);background:var(--accent);color:var(--accent-contrast);font-weight:600}
- .grid{display:grid;gap:20px}
-+
-+/* Cover-Sizing (kleiner & konsistent) */
-+.book-cover{
-+  width:100%;
-+  height:auto;
-+  max-height:300px;          /* Kartenansicht */
-+  border-radius:12px;
-+  object-fit:cover;
-+  aspect-ratio: 2 / 3;
-+}
-+.book-cover-lg{
-+  width:100%;
-+  max-width:320px;           /* Detailseite linke Spalte */
-+  aspect-ratio: 2 / 3; height:auto; border-radius:14px; object-fit:cover;
-+}
-diff --git a/src/components/BookCard.tsx b/src/components/BookCard.tsx
-index c7de8b1..2a6a3f0 100644
---- a/src/components/BookCard.tsx
-+++ b/src/components/BookCard.tsx
-@@ -1,26 +1,26 @@
- import Link from "next/link";
- import type { Book } from "@/lib/types";
- import Image from "next/image";
+diff --git a/src/styles/book-side.css b/src/styles/book-side.css
+index 6b1b2c1..d3f9a77 100644
+--- a/src/styles/book-side.css
++++ b/src/styles/book-side.css
+@@ -1,39 +1,46 @@
+ :root {
+   /* Scroll-/Anim-Fortschritt 0..1 (setzen wir per JS) */
+-  --p: 0;
++  --p: 0;
 
- export default function BookCard({ book }: { book: Book }){
-   const firstRetailer = book.retailers?.[0]?.url ?? "#";
-   return (
-     <article className="card">
--      <Image
--        src={book.cover}
--        alt={`Cover: ${book.title}`}
--        width={320}
--        height={480}
--        sizes="(max-width: 600px) 45vw, (max-width: 1200px) 25vw, 240px"
--        style={{ width: "100%", height: "auto", borderRadius: "12px", objectFit: "cover" }}
--        priority={false}
--      />
-+      <Image
-+        src={book.cover}
-+        alt={`Cover: ${book.title}`}
-+        width={220}
-+        height={330}
-+        sizes="(max-width: 600px) 40vw, (max-width: 1200px) 22vw, 220px"
-+        className="book-cover"
-+        priority={false}
-+      />
-       <h3 style={{marginTop:12}}>{book.title}</h3>
-       <p style={{color:'var(--muted)'}}>{book.blurb}</p>
-       <div style={{display:'flex', gap:10, marginTop:10}}>
-         <Link className="button" href={`/buch/${book.slug}`}>Mehr</Link>
-         <Link className="button ghost" href={firstRetailer}>Kaufen</Link>
-       </div>
-     </article>
-   );
+   /* Buch-Parameter */
+   --book-w: min(92vw, 1200px);
+   --book-h: calc(var(--book-w) * 0.65); /* Seitenverhältnis */
+   --thickness: 38px;                     /* Gesamtdicke des Blocks */
+   --spine-thickness: 16px;               /* Der Rücken mittig */
+-  --page-count: 300;                     /* optische Dicke */
+-  --flip-count: 10;                      /* wie viele Seiten sanft blättern */
++  --page-count: 300;                     /* optische Dicke */
++  --flip-count: 10;                      /* wie viele Seiten sanft blättern */
+
+   /* Drehwinkel */
+-  --tilt-x: 12deg;     /* Kamera leicht von unten */
+-  --tilt-y: -4deg;     /* minimal perspektivisch */
++  --tilt-x: -18deg;    /* von UNTEN schauen (negativ!) */
++  --tilt-y: 0deg;
+
+   /* Zeiten/Fenster */
+-  --cover-open-start: 0.00;
+-  --flip-start: 0.15;  /* ab hier beginnen Seiten zu schwingen */
+-  --flip-end: 0.95;
++  --cover-open-start: 0.00;
++  --flip-start: 0.10;  /* früher anfangen */
++  --flip-end: 0.98;    /* später enden */
+
+   /* Farben/Material */
+   --paper-a: #fffaf2;
+   --paper-b: #fff6e9;
+   --edge-line: #e2dccf;
+   --edge-shadow: #0000001f;
+   --table: radial-gradient(1200px 600px at 50% 10%, #00000010, transparent 70%), var(--bg, #faf7f2);
  }
-diff --git a/src/app/buch/[slug]/page.tsx b/src/app/buch/[slug]/page.tsx
-index 8f1b4a2..1b3a6a9 100644
---- /src/app/buch/[slug]/page.tsx
-+++ /src/app/buch/[slug]/page.tsx
-@@ -1,6 +1,7 @@
- import { getBook, getBooks } from "@/lib/books";
- import RetailerButtons from "@/components/RetailerButtons";
- import Seo from "@/components/Seo";
- import Image from "next/image";
 
- type Props = { params: { slug: string } };
+ /* Sektion oben */
+ .bookside-wrap {
+   position: relative;
+   background: var(--table);
+-  overflow: clip;
++  overflow: clip;
++  min-height: 180vh;              /* echter Scrollweg, damit --p von 0..1 läuft */
+ }
 
-@@ -26,14 +27,17 @@ export default function BookDetailPage({ params }: Props){
+ /* Bühne: 100vh hoch, direkt im Kopf */
+ .bookside-stage {
+-  height: clamp(520px, 92vh, 960px);
+-  display: grid;
+-  place-items: center;
+-  perspective: 1400px;
+-  perspective-origin: 50% 30%;
++  position: sticky;
++  top: 0;
++  height: 100vh;
++  display: grid;
++  place-items: center;
++  perspective: 1400px;
++  perspective-origin: 50% 120%;   /* Kamera tiefer → Look von unten */
+ }
+
+ /* Szene: leichte Kameraneigung (Tischhöhe/Frontansicht) */
+ .bookside-scene {
+   position: relative;
+   width: var(--book-w);
+   height: var(--book-h);
+   transform-style: preserve-3d;
+-  transform: rotateX(var(--tilt-x)) rotateY(var(--tilt-y)) translateY(8px);
++  transform: rotateX(var(--tilt-x)) rotateY(var(--tilt-y)); /* klarer Bottom-Up-Look */
+ }
+
+ /* Bodenschatten */
+ .bookside-shadow {
+-  position: absolute;
+-  inset: auto 10% 4% 10%;
++  position: absolute;
++  inset: auto 12% 6% 12%;
+   height: clamp(28px, 5vh, 56px);
+   background: radial-gradient(80% 100% at 50% 0%, #00000040, transparent 70%);
+   filter: blur(10px);
+@@ -154,15 +161,15 @@
+   --t0: calc(var(--flip-start) + (var(--i) / var(--n)) * (var(--flip-end) - var(--flip-start)));
+   --t1: calc(var(--t0) + (var(--flip-end) - var(--flip-start)) / var(--n));
+   --local: clamp((var(--p) - var(--t0)) / max(0.0001, (var(--t1) - var(--t0))), 0, 1);
+
+   /* sanfte S-Kurve (ease-in-out) */
+-  --e: calc( (1 - cos(var(--local) * 3.14159)) / 2 );
+-
+-  /* Winkel von 0° -> ~-170° (fast umgeschlagen) */
+-  --angle: calc(-170deg * var(--e));
+-  transform: rotateY(var(--angle)) translateZ(calc(var(--i) * 0.15px));
+-  --shade: calc(var(--e) * .55);
++  --e: calc((1 - cos(var(--local) * 3.14159)) / 2);
++  /* etwas weiter überschlagen, minimaler Layer-Versatz für Tiefe */
++  --angle: calc(-185deg * var(--e));
++  transform: rotateY(var(--angle)) translateZ(calc(var(--i) * 0.2px));
++  --shade: calc(var(--e) * .6);
+ }
+
+ /* Rechte feste Leseseite (sichtbar) – hier kannst du echten Text/CTA platzieren */
+ .bookside-right-content {
+   position: absolute;
+diff --git a/src/components/BookSideHero.tsx b/src/components/BookSideHero.tsx
+index 5f2aa91..b7b2f44 100644
+--- a/src/components/BookSideHero.tsx
++++ b/src/components/BookSideHero.tsx
+@@ -1,39 +1,44 @@
+ 'use client';
+ import { useEffect, useRef } from 'react';
+ import '@/styles/book-side.css';
+
+ export default function BookSideHero(){
+   const wrapRef = useRef<HTMLDivElement>(null);
+
+   useEffect(() => {
+-    const el = wrapRef.current!;
+-    const update = () => {
+-      const r = el.getBoundingClientRect();
+-      const vh = window.innerHeight || 1;
+-      /* Fortschritt 0..1: Sobald die Bühne im Sichtfenster ist */
+-      const p = Math.max(0, Math.min(1, (vh - r.top) / (r.height + vh * 0.25)));
+-      document.documentElement.style.setProperty('--p', p.toFixed(4));
+-    };
+-    update();
+-    const onScroll = () => update();
+-    window.addEventListener('scroll', onScroll, { passive: true });
+-    window.addEventListener('resize', update);
+-    return () => {
+-      window.removeEventListener('scroll', onScroll);
+-      window.removeEventListener('resize', update);
+-    };
++    const el = wrapRef.current!;
++    // Startposition der Section relativ zum Dokument
++    let startY = 0;
++    const recalc = () => {
++      const rect = el.getBoundingClientRect();
++      startY = rect.top + window.scrollY;
++      update();
++    };
++    const update = () => {
++      const total = Math.max(1, el.offsetHeight - window.innerHeight); // Scrollweg innerhalb der Section
++      const scrolled = Math.min(Math.max(window.scrollY - startY, 0), total);
++      const p = scrolled / total; // 0..1
++      document.documentElement.style.setProperty('--p', p.toFixed(4));
++    };
++    recalc();
++    window.addEventListener('scroll', update, { passive: true });
++    window.addEventListener('resize', recalc);
++    return () => {
++      window.removeEventListener('scroll', update);
++      window.removeEventListener('resize', recalc);
++    };
+   }, []);
+
    return (
-     <main className="container">
-       <Seo title={book.title} description={book.blurb} jsonLd={jsonLd} ogImage="/images/og/default.jpg" />
--      <div className="grid" style={{gridTemplateColumns:'minmax(260px, 360px) 1fr', alignItems:'start'}}>
--        <Image
--          src={book.cover}
--          alt={`Cover: ${book.title}`}
--          width={480}
--          height={720}
--          sizes="(max-width: 900px) 60vw, 420px"
--          style={{ width: "100%", height: "auto", borderRadius: "14px", objectFit: "cover" }}
--          priority={false}
--        />
-+      <div
-+        className="grid"
-+        style={{ gridTemplateColumns: 'minmax(200px, 320px) 1fr', alignItems: 'start' }}
-+      >
-+        <Image
-+          src={book.cover}
-+          alt={`Cover: ${book.title}`}
-+          width={360}
-+          height={540}
-+          sizes="(max-width: 900px) 65vw, 320px"
-+          className="book-cover-lg"
-+          priority={false}
-+        />
-         <div>
-           <h1>{book.title}</h1>
-           <p style={{color:'var(--muted)'}}>{book.blurb}</p>
-           {book.retailers && <RetailerButtons links={book.retailers} />}
+     <section className="bookside-wrap" ref={wrapRef} aria-label="Buch in Seitenansicht, Seiten schwingen">
+       <div className="bookside-stage">
+-        <div className="bookside-scene" role="img" aria-label="Offenes Buch, von vorne/tief gesehen">
++        <div className="bookside-scene" role="img" aria-label="Offenes Buch, Bottom-Up-Perspektive">
+           <div className="bookside-shadow" />
+           <div className="bookside-core" />
+
+           {/* Starre Blöcke links/rechts (dicker Seitenstapel ~300 Seiten) */}
+           <div className="bookside-left-block"><div className="bookside-edge" /></div>
+           <div className="bookside-right-block"><div className="bookside-edge" /></div>
+
+           {/* ~10 blätternde Seiten aus der Falz nach rechts */}
+           <div className="bookside-flips" aria-hidden>
+             {Array.from({ length: 10 }).map((_, i) => (
+               <div className="flip" key={i} />
+             ))}
+           </div>
+
+           {/* Rechte „Leseseite“ (Demo-Linien; hier kannst du echten Text/CTA setzen) */}
+           <div className="bookside-right-content" aria-hidden>
+             <div className="line" /><div className="line" /><div className="line" />
+             <div className="line" /><div className="line" />
+           </div>
          </div>
        </div>
-     </main>
+     </section>
    );
  }
