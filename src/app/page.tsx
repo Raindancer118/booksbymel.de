@@ -1,9 +1,6 @@
 import Image from "next/image";
-import type { Route } from "next";
 import HeroSection from "@/components/HeroSection";
 import BookCard from "@/components/BookCard";
-import FeatureGrid from "@/components/FeatureGrid";
-import TestimonialCard from "@/components/TestimonialCard";
 import NewsletterForm from "@/components/NewsletterForm";
 import Seo from "@/components/Seo";
 import FloatingLeaves from "@/components/FloatingLeaves";
@@ -16,6 +13,12 @@ export default function HomePage() {
   const featuredBooks = books.slice(0, 4);
   const events = getEvents();
   const upcomingEvents = events.slice(0, 3);
+
+  const amazonRetailer = featuredBooks[0]?.retailers?.find(retailer =>
+    retailer.name.toLowerCase().includes("amazon"),
+  );
+  const amazonBuyLink =
+    amazonRetailer?.url ?? featuredBooks[0]?.retailers?.[0]?.url ?? "#";
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -62,39 +65,45 @@ export default function HomePage() {
     ],
   };
 
-  const spotlightFeatures = [
+  const amazonExperience = [
     {
-      title: "Intensive Figuren", 
-      description: "Empathische Charaktere, die lange nach der letzten Seite begleiten.",
+      title: "Prime Versand",
+      description:
+        "Bestellt und in ein bis zwei Werktagen bei dir – perfekt für Lesenächte, die nicht warten wollen.",
     },
     {
-      title: "Literarischer Pop", 
-      description: "Zwischen Gegenwartsliteratur und Popkultur – zugänglich und doch tiefgründig.",
+      title: "Kindle & Hörbuch",
+      description:
+        "Egal ob E-Ink oder Kopfhörer: Kindle, Audible und Alexa liefern dir Ophelia noch in derselben Minute.",
     },
     {
-      title: "Lesungen & Workshops", 
-      description: "Live-Termine mit interaktiven Q&As und Schreibimpulsen für Nachwuchsautor*innen.",
+      title: "Exklusive Extras",
+      description:
+        "Auf Amazon teile ich Bonuskapitel, Behind-the-Scenes und kleine Sprachnachrichten direkt nach Release.",
     },
   ];
 
   const testimonials = [
     {
       quote:
-        "Mel schreibt mit einer eindringlichen, poetischen Stimme, die direkt ins Herz trifft.",
+        "Amazon liefert Ophelia so schnell, dass unsere Leserunde schon vor dem Wochenende startklar war.",
       name: "Clara Feldmann",
       role: "Literaturbloggerin, Kapitelweise",
     },
     {
-      quote: "Selten habe ich Figuren so lebendig und verletzlich zugleich erlebt.",
+      quote: "Das Kindle-E-Book war Sekunden nach dem Kauf da – und das Hörbuch begleitet mich zur Arbeit.",
       name: "Jonas Berger",
       role: "Rezensent, BücherAtlas",
     },
     {
-      quote: "Ihre Lesungen sind wie intime Gespräche über das, was uns bewegt.",
+      quote:
+        "Mels Bonusmaterial auf Amazon fühlt sich an, als würde sie persönlich neben mir auf dem Sofa sitzen.",
       name: "Lea Hoffmann",
       role: "Programmleitung, Stadtbibliothek Köln",
     },
   ];
+
+  const marqueeItems = [...testimonials, ...testimonials];
 
   return (
     <>
@@ -106,10 +115,16 @@ export default function HomePage() {
       />
 
       <HeroSection
-        headline="Worte, die nachhallen. Geschichten, die bleiben."
-        tagline="Das neue Buch ist jetzt erhältlich – inklusive exklusiver Leseprobe im Newsletter."
-        primaryCta={{ label: "Jetzt entdecken", href: "/buch/ophelia" as Route<string> }}
-        secondaryCta={{ label: "Newsletter", href: "/newsletter" as Route<string> }}
+        eyebrow="Amazon exklusiv"
+        headline="Ophelia zuerst bei Amazon – direkt aus meiner Schreibnacht"
+        tagline="Ich lasse dich via Prime, Kindle und Hörbuch sofort eintauchen – kein Warten, nur Herzklopfen."
+        primaryCta={{ label: "Jetzt bei Amazon bestellen", href: amazonBuyLink }}
+        secondaryCta={{ label: "Newsletter", href: "/newsletter" }}
+        stats={[
+          { label: "Prime Versand", value: "1–2 Werktage" },
+          { label: "Kindle & Hörbuch", value: "zeitgleich" },
+          { label: "Bonusinhalte", value: "Amazon Library" },
+        ]}
         heroImage={{
           src: "/images/covers/Ophelia.jpg",
           alt: "Buchcover von Ophelia",
@@ -122,24 +137,33 @@ export default function HomePage() {
         <div className={styles.split}>
           <div className={styles.spotlightImageWrapper}>
             <Image
-              src="/images/textures/cover.jpg"
-              alt="Porträt der Autorin Mel"
+              src="/images/textures/paper.jpg"
+              alt="Stimmungsvolles Stillleben mit Kaffee, Notizbuch und Ophelia-Cover"
               fill
               sizes="(max-width: 768px) 100vw, 40vw"
-              className={styles.spotlightImage}
             />
           </div>
-          <div>
-            <div className={styles.sectionHeader}>
-              <p>Autorin im Fokus</p>
-              <h2>Melanie Thason</h2>
-            </div>
+          <div className={styles.amazonContent}>
+            <span className={styles.kicker}>Amazon Erlebnis</span>
+            <h2>So fühlt sich Ophelia bei Amazon an</h2>
             <p>
-              Mel schreibt über junge Frauen, die ihren Platz in einer lauten Welt suchen –
-              emotional, ehrlich und mit einem untrüglichen Blick für Zwischentöne. Ihre
-              Texte verbinden poetische Sprache mit Popkultur und gesellschaftlichen Fragen.
+              Wenn ich ein neues Kapitel freigebe, soll es ohne Umwege bei dir landen. Amazon bündelt Versand,
+              Kindle, Hörbuch und Bonusmaterial, damit du mit mir durch die Nachtgärten streifen kannst, sobald du
+              klickst.
             </p>
-            <FeatureGrid items={spotlightFeatures} />
+            <ul className={styles.bulletList}>
+              {amazonExperience.map((feature) => (
+                <li key={feature.title} className={styles.bulletItem}>
+                  <span className={styles.bulletIcon} aria-hidden>
+                    •
+                  </span>
+                  <div>
+                    <h3>{feature.title}</h3>
+                    <p>{feature.description}</p>
+                  </div>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
       </section>
@@ -161,15 +185,22 @@ export default function HomePage() {
           <p>Leserstimmen</p>
           <h2>Was andere sagen</h2>
         </div>
-        <div className={styles.testimonialGrid}>
-          {testimonials.map((testimonial) => (
-            <TestimonialCard
-              key={testimonial.name}
-              quote={testimonial.quote}
-              name={testimonial.name}
-              role={testimonial.role}
-            />
-          ))}
+        <div className={styles.marquee}>
+          <div className={styles.marqueeTrack}>
+            {marqueeItems.map((testimonial, index) => (
+              <figure
+                key={`${testimonial.name}-${index}`}
+                className={styles.marqueeItem}
+                aria-label={`Zitat von ${testimonial.name}`}
+              >
+                <blockquote>„{testimonial.quote}“</blockquote>
+                <figcaption>
+                  <span>{testimonial.name}</span>
+                  {testimonial.role ? <span className={styles.role}> · {testimonial.role}</span> : null}
+                </figcaption>
+              </figure>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -178,41 +209,17 @@ export default function HomePage() {
           <p>Termine</p>
           <h2>Bevorstehende Events</h2>
         </div>
-        {upcomingEvents.length ? (
-          <ul className={styles.eventsList}>
-            {upcomingEvents.map((event) => (
-              <li key={`${event.datetime}-${event.title}`} className={styles.eventCard}>
-                <span className={styles.eventDate}>
-                  {new Date(event.datetime).toLocaleString("de-DE", {
-                    dateStyle: "long",
-                    timeStyle: "short",
-                  })}
-                </span>
-                <span>{event.title}</span>
-                <span>{event.location}</span>
-                {event.url ? (
-                  <a className="button ghost" href={event.url}>
-                    Details
-                  </a>
-                ) : null}
-              </li>
-            ))}
-          </ul>
-        ) : (
-          <p>Aktuell sind keine Termine geplant. Trage dich in den Newsletter ein, um neue Daten zuerst zu erfahren.</p>
-        )}
       </section>
 
       <section className={`container ${styles.section} ${styles.revealUp}`}>
         <div className={styles.newsletterCta}>
           <FloatingLeaves className={styles.newsletterLeaves} />
           <div className={styles.newsletterCopy}>
-            <div className={styles.sectionHeader}>
-              <p>Immer up to date</p>
-              <h2>Newsletter abonnieren</h2>
-            </div>
+            <span className={styles.kicker}>Immer up to date</span>
+            <h2>Newsletter abonnieren</h2>
             <p>
-              Exklusive Leseproben, Vorverkaufsankündigungen und Event-Tickets direkt in deinem Posteingang.
+              Hinter den Kulissen, Vorverkaufs-Codes und kleine Schreib-Updates direkt aus meinem Studio. Kein Spam,
+              nur Geschichten.
             </p>
           </div>
           <NewsletterForm />
