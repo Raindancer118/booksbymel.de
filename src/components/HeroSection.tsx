@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import type { Route } from "next";
 import styles from "./HeroSection.module.css";
+import FloatingLeaves from "./FloatingLeaves";
 
 type Cta = { label: string; href: Route<string> };
 
@@ -27,6 +28,7 @@ export default function HeroSection({
 }: HeroSectionProps) {
   return (
     <section className={`${styles.hero} container`}>
+      <FloatingLeaves className={styles.leafLayer} />
       <div className={styles.layout}>
         <div className={styles.copy}>
           <h1 className={styles.headline}>{headline}</h1>

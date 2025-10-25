@@ -6,6 +6,7 @@ import FeatureGrid from "@/components/FeatureGrid";
 import TestimonialCard from "@/components/TestimonialCard";
 import NewsletterForm from "@/components/NewsletterForm";
 import Seo from "@/components/Seo";
+import FloatingLeaves from "@/components/FloatingLeaves";
 import { getBooks } from "@/lib/books";
 import { getEvents } from "@/lib/events";
 import styles from "./page.module.css";
@@ -117,7 +118,7 @@ export default function HomePage() {
         }}
       />
 
-      <section className={`container ${styles.section}`}>
+      <section className={`container ${styles.section} ${styles.revealUp}`}>
         <div className={styles.split}>
           <div className={styles.spotlightImageWrapper}>
             <Image
@@ -143,7 +144,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className={`container ${styles.section}`}>
+      <section className={`container ${styles.section} ${styles.revealUp} ${styles.revealDelaySm}`}>
         <div className={styles.sectionHeader}>
           <p>Neu & empfohlen</p>
           <h2>Frisch im Regal</h2>
@@ -155,7 +156,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className={`container ${styles.section}`}>
+      <section className={`container ${styles.section} ${styles.revealUp} ${styles.revealDelayMd}`}>
         <div className={styles.sectionHeader}>
           <p>Leserstimmen</p>
           <h2>Was andere sagen</h2>
@@ -172,7 +173,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className={`container ${styles.section}`}>
+      <section className={`container ${styles.section} ${styles.revealUp} ${styles.revealDelayLg}`}>
         <div className={styles.sectionHeader}>
           <p>Termine</p>
           <h2>Bevorstehende Events</h2>
@@ -202,8 +203,9 @@ export default function HomePage() {
         )}
       </section>
 
-      <section className={`container ${styles.section}`}>
+      <section className={`container ${styles.section} ${styles.revealUp}`}>
         <div className={styles.newsletterCta}>
+          <FloatingLeaves className={styles.newsletterLeaves} />
           <div className={styles.newsletterCopy}>
             <div className={styles.sectionHeader}>
               <p>Immer up to date</p>
