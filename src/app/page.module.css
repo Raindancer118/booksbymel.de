@@ -1,0 +1,101 @@
+.section {
+  padding-block: clamp(3rem, 7vw, 5rem);
+}
+
+.sectionHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: clamp(1.5rem, 4vw, 2.5rem);
+}
+
+.sectionHeader p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.split {
+  display: grid;
+  gap: clamp(1.5rem, 5vw, 3rem);
+  align-items: center;
+}
+
+.spotlightImageWrapper {
+  position: relative;
+  border-radius: var(--radius);
+  overflow: hidden;
+  aspect-ratio: 4 / 5;
+}
+
+.spotlightImage {
+  object-fit: cover;
+}
+
+.slider {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(240px, 280px);
+  gap: 1.5rem;
+  overflow-x: auto;
+  padding-bottom: 0.5rem;
+  scroll-snap-type: x mandatory;
+}
+
+.slider > * {
+  scroll-snap-align: start;
+}
+
+.testimonialGrid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.eventsList {
+  display: grid;
+  gap: 1rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.eventCard {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: var(--radius);
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.eventDate {
+  font-weight: 600;
+}
+
+.newsletterCta {
+  background: rgba(255, 255, 255, 0.07);
+  border-radius: var(--radius);
+  padding: clamp(2rem, 4vw, 3rem);
+  display: grid;
+  gap: 1.25rem;
+}
+
+.newsletterCopy {
+  max-width: 520px;
+}
+
+@media (min-width: 768px) {
+  .split {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }
+
+  .testimonialGrid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 767px) {
+  .slider {
+    grid-auto-columns: minmax(70%, 1fr);
+  }
+}
