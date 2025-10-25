@@ -11,6 +11,9 @@
   --color-brand-800: #6b272b;
   --color-brand-900: #41151b;
 
+  --color-ophelia-green: #919896; /* Sampled from Ophelia jacket */
+  --color-ophelia-green-dark: #3a4544;
+
   /* Neutral grays */
   --color-neutral-50: #f8f7f5;
   --color-neutral-100: #efede9;
@@ -24,11 +27,11 @@
   --color-neutral-900: #27231f;
 
   /* Core surfaces */
-  --color-bg: #fdf9f3;
-  --color-bg-muted: #f7efe4;
-  --color-surface: #ffffff;
-  --color-surface-muted: #f3e4d8;
-  --color-surface-contrast: #2f231c;
+  --color-bg: var(--color-ophelia-green);
+  --color-bg-muted: #86938b;
+  --color-surface: #f7f9f7;
+  --color-surface-muted: #e4ebe6;
+  --color-surface-contrast: #243028;
 
   /* Text & accents */
   --color-text: #2e261f;
@@ -76,11 +79,11 @@
 
 @media (prefers-color-scheme: dark){
   :root{
-    --color-bg: #18100c;
-    --color-bg-muted: #211712;
-    --color-surface: #281d17;
-    --color-surface-muted: #37261f;
-    --color-surface-contrast: #f9f1ea;
+    --color-bg: #1a2320;
+    --color-bg-muted: #25312d;
+    --color-surface: #1f2a26;
+    --color-surface-muted: #27342f;
+    --color-surface-contrast: #f2f6f4;
     --color-text: #f9f1ea;
     --color-text-muted: #d6c5b7;
     --color-accent: #f19a7f;
