@@ -3,6 +3,7 @@ import HeroSection from "@/components/HeroSection";
 import BookCard from "@/components/BookCard";
 import NewsletterForm from "@/components/NewsletterForm";
 import Seo from "@/components/Seo";
+import FloatingLeaves from "@/components/FloatingLeaves";
 import { getBooks } from "@/lib/books";
 import { getEvents } from "@/lib/events";
 import styles from "./page.module.css";
@@ -132,9 +133,9 @@ export default function HomePage() {
         }}
       />
 
-      <section className={`${styles.band} ${styles.amazonBand}`}>
-        <div className={`container ${styles.amazonSplit}`}>
-          <div className={styles.amazonVisual}>
+      <section className={`container ${styles.section} ${styles.revealUp}`}>
+        <div className={styles.split}>
+          <div className={styles.spotlightImageWrapper}>
             <Image
               src="/images/textures/paper.jpg"
               alt="Stimmungsvolles Stillleben mit Kaffee, Notizbuch und Ophelia-Cover"
@@ -167,28 +168,22 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className={`${styles.band} ${styles.booksBand}`}>
-        <div className="container">
-          <div className={styles.sectionHeader}>
-            <p>Neu & empfohlen</p>
-            <h2>Frisch im Regal</h2>
-          </div>
-          <div className={styles.glassRail}>
-            <div className={styles.bookCarousel}>
-              {featuredBooks.map((book) => (
-                <BookCard key={book.slug} book={book} />
-              ))}
-            </div>
-          </div>
+      <section className={`container ${styles.section} ${styles.revealUp} ${styles.revealDelaySm}`}>
+        <div className={styles.sectionHeader}>
+          <p>Neu & empfohlen</p>
+          <h2>Frisch im Regal</h2>
+        </div>
+        <div className={styles.slider}>
+          {featuredBooks.map((book) => (
+            <BookCard key={book.slug} book={book} />
+          ))}
         </div>
       </section>
 
-      <section className={`${styles.band} ${styles.testimonialBand}`}>
-        <div className="container">
-          <div className={styles.sectionHeader}>
-            <p>Leserstimmen</p>
-            <h2>Was andere sagen</h2>
-          </div>
+      <section className={`container ${styles.section} ${styles.revealUp} ${styles.revealDelayMd}`}>
+        <div className={styles.sectionHeader}>
+          <p>Leserstimmen</p>
+          <h2>Was andere sagen</h2>
         </div>
         <div className={styles.marquee}>
           <div className={styles.marqueeTrack}>
@@ -209,46 +204,16 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className={`${styles.band} ${styles.eventsBand}`}>
-        <div className="container">
-          <div className={styles.sectionHeader}>
-            <p>Termine</p>
-            <h2>Bevorstehende Events</h2>
-          </div>
-          {upcomingEvents.length ? (
-            <div className={styles.scheduleWidget}>
-              <ul className={styles.scheduleList}>
-                {upcomingEvents.map((event) => (
-                  <li key={`${event.datetime}-${event.title}`} className={styles.scheduleItem}>
-                    <div>
-                      <span className={styles.scheduleDate}>
-                        {new Date(event.datetime).toLocaleString("de-DE", {
-                          dateStyle: "long",
-                          timeStyle: "short",
-                        })}
-                      </span>
-                      <p className={styles.scheduleTitle}>{event.title}</p>
-                      <p className={styles.scheduleLocation}>{event.location}</p>
-                    </div>
-                    {event.url ? (
-                      <a className="button ghost" href={event.url}>
-                        Details
-                      </a>
-                    ) : null}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ) : (
-            <p className={styles.scheduleEmpty}>
-              Aktuell sind keine Termine geplant. Trag dich in den Newsletter ein, um neue Daten zuerst zu erfahren.
-            </p>
-          )}
+      <section className={`container ${styles.section} ${styles.revealUp} ${styles.revealDelayLg}`}>
+        <div className={styles.sectionHeader}>
+          <p>Termine</p>
+          <h2>Bevorstehende Events</h2>
         </div>
       </section>
 
-      <section className={`${styles.band} ${styles.newsletterBand}`}>
-        <div className={`container ${styles.newsletterLayout}`}>
+      <section className={`container ${styles.section} ${styles.revealUp}`}>
+        <div className={styles.newsletterCta}>
+          <FloatingLeaves className={styles.newsletterLeaves} />
           <div className={styles.newsletterCopy}>
             <span className={styles.kicker}>Immer up to date</span>
             <h2>Newsletter abonnieren</h2>

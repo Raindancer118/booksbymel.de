@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import styles from "./HeroSection.module.css";
+import FloatingLeaves from "./FloatingLeaves";
 
 type Cta = { label: string; href: string };
 
@@ -35,6 +36,7 @@ export default function HeroSection({
 }: HeroSectionProps) {
   return (
     <section className={`${styles.hero} container`}>
+      <FloatingLeaves className={styles.leafLayer} />
       <div className={styles.layout}>
         <div className={styles.copy}>
           {eyebrow ? <span className={styles.eyebrow}>{eyebrow}</span> : null}
