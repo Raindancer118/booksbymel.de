@@ -1,6 +1,6 @@
 import type { RetailerLink } from "@/lib/types";
 
-export default function RetailerButtons({ links }: { links: RetailerLink[] }){
+export default function RetailerButtons({ links }: { links: RetailerLink[] }) {
   return (
     <div style={{display:"flex", gap:8, flexWrap:"wrap"}}>
       {links.map(r => (
