@@ -1,19 +1,57 @@
+import Image from "next/image";
 import Link from "next/link";
+import type { Route } from "next";
+import styles from "./HeroSection.module.css";
 
-export default function HeroSection(){
+type Cta = { label: string; href: Route<string> };
+
+type HeroSectionProps = {
+  headline: string;
+  tagline: string;
+  primaryCta: Cta;
+  secondaryCta?: Cta;
+  heroImage: {
+    src: string;
+    alt: string;
+    width?: number;
+    height?: number;
+  };
+};
+
+export default function HeroSection({
+  headline,
+  tagline,
+  primaryCta,
+  secondaryCta,
+  heroImage,
+}: HeroSectionProps) {
   return (
-    <section className="container" style={{paddingBlock: '48px'}}>
-      <div className="grid" style={{gridTemplateColumns:'1.1fr 0.9fr', alignItems:'center'}}>
-        <div>
-          <h1>Worte, die nachhallen. Geschichten, die bleiben.</h1>
-          <p style={{color:'var(--muted)'}}>Das neue Buch ist jetzt erhältlich – mit exklusiver Leseprobe.</p>
-          <div style={{display:'flex', gap:12, marginTop:16}}>
-            <Link className="button" href="/buecher">Alle Bücher</Link>
-            <Link className="button ghost" href="/newsletter">Newsletter</Link>
+    <section className={`${styles.hero} container`}>
+      <div className={styles.layout}>
+        <div className={styles.copy}>
+          <h1 className={styles.headline}>{headline}</h1>
+          <p className={styles.tagline}>{tagline}</p>
+          <div className={styles.ctas}>
+            <Link className="button" href={primaryCta.href}>
+              {primaryCta.label}
+            </Link>
+            {secondaryCta ? (
+              <Link className="button ghost" href={secondaryCta.href}>
+                {secondaryCta.label}
+              </Link>
+            ) : null}
           </div>
         </div>
-        <div className="card">
-          <img alt="Buchcover Platzhalter" src="/images/covers/placeholder.webp" />
+        <div className={`card ${styles.mediaCard}`}>
+          <Image
+            className={styles.media}
+            src={heroImage.src}
+            alt={heroImage.alt}
+            width={heroImage.width ?? 600}
+            height={heroImage.height ?? 720}
+            sizes="(max-width: 768px) 100vw, 540px"
+            priority
+          />
         </div>
       </div>
     </section>
