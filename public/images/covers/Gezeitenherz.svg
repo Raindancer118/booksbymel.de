@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 900">
+  <defs>
+    <linearGradient id="ocean" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0f3057" />
+      <stop offset="100%" stop-color="#1f7a8c" />
+    </linearGradient>
+    <linearGradient id="sun" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ffecd2" />
+      <stop offset="100%" stop-color="#fcb69f" />
+    </linearGradient>
+  </defs>
+  <rect width="600" height="900" fill="url(#ocean)" />
+  <circle cx="300" cy="240" r="120" fill="url(#sun)" opacity="0.85" />
+  <path d="M0 520 Q150 460 300 520 T600 520 V900 H0 Z" fill="#144d6f" />
+  <path d="M0 580 Q180 520 300 580 T600 580 V900 H0 Z" fill="#0c2737" opacity="0.8" />
+  <text x="60" y="690" fill="#d7f9ff" font-family="Georgia, serif" font-size="72">Gezeiten</text>
+  <text x="60" y="760" fill="#d7f9ff" font-family="Georgia, serif" font-size="72">herz</text>
+  <text x="60" y="820" fill="#c2ecff" font-family="Georgia, serif" font-size="32">Melanie Thason</text>
+</svg>
