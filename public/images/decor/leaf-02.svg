@@ -1,0 +1,16 @@
+<svg width="200" height="220" viewBox="0 0 200 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="leaf02-fill" x1="28" y1="16" x2="172" y2="196" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#3D8A53" />
+      <stop offset="1" stop-color="#B5E4A2" />
+    </linearGradient>
+    <linearGradient id="leaf02-vein" x1="100" y1="0" x2="100" y2="200" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#FFFFFF" stop-opacity="0.6" />
+      <stop offset="1" stop-color="#F0FFE7" stop-opacity="0.1" />
+    </linearGradient>
+  </defs>
+  <path d="M180 120C180 173.019 144.183 200 100 200C55.8172 200 20 173.019 20 120C20 66.9807 55.8172 20 100 20C144.183 20 180 66.9807 180 120Z" fill="url(#leaf02-fill)" />
+  <path d="M100 32C102.209 32 104 33.7909 104 36V188C104 190.209 102.209 192 100 192C97.7909 192 96 190.209 96 188V36C96 33.7909 97.7909 32 100 32Z" fill="url(#leaf02-vein)" />
+  <path d="M100 74C130 90 150 112 158 140" stroke="#F1FFE9" stroke-opacity="0.4" stroke-width="3" stroke-linecap="round" />
+  <path d="M100 92C72 108 50 134 44 164" stroke="#F1FFE9" stroke-opacity="0.28" stroke-width="3" stroke-linecap="round" />
+</svg>

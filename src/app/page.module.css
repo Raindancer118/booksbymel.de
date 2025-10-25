@@ -1,3 +1,38 @@
+.revealUp {
+  --reveal-duration: 0.85s;
+  --reveal-delay: 0s;
+  --reveal-ease: cubic-bezier(0.16, 1, 0.3, 1);
+  opacity: 0;
+  transform: translate3d(0, 24px, 0);
+  animation: revealUp var(--reveal-duration) var(--reveal-ease) forwards;
+  animation-delay: var(--reveal-delay);
+  will-change: transform, opacity;
+}
+
+.revealDelaySm {
+  --reveal-delay: 0.15s;
+}
+
+.revealDelayMd {
+  --reveal-delay: 0.3s;
+}
+
+.revealDelayLg {
+  --reveal-delay: 0.45s;
+}
+
+@keyframes revealUp {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 32px, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
 .section {
   padding-block: clamp(3rem, 7vw, 5rem);
 }
@@ -78,6 +113,20 @@
   padding: clamp(2rem, 4vw, 3rem);
   display: grid;
   gap: 1.25rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.newsletterCta > * {
+  position: relative;
+  z-index: 1;
+}
+
+.newsletterLeaves {
+  position: absolute;
+  inset: -25% -20% -15%;
+  mix-blend-mode: screen;
+  opacity: 0.75;
 }
 
 .newsletterCopy {
@@ -91,6 +140,19 @@
 
   .testimonialGrid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .revealUp {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+
+  .newsletterLeaves {
+    mix-blend-mode: normal;
+    opacity: 0.45;
   }
 }
 
