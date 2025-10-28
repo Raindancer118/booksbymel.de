@@ -41,7 +41,7 @@ export default function Header(){
   const toggleNavigation = () => setIsOpen(prev => !prev);
 
   return (
-    <header className="site-header">
+    <header className="site-header" data-nav-open={isOpen ? "true" : "false"}>
       <div className="container site-header__inner">
         <Link href="/" className="site-brand">
           Books by Mel
