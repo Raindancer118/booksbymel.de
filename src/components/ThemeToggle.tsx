@@ -133,7 +133,7 @@ export default function ThemeToggle({ className }: ThemeToggleProps){
     return "Dunklen Modus aktivieren";
   }, [theme]);
 
-  const Icon = theme === "dark" ? SunIcon : MoonIcon;
+  const ThumbIcon = theme === "dark" ? MoonIcon : SunIcon;
 
   return (
     <button
@@ -143,8 +143,19 @@ export default function ThemeToggle({ className }: ThemeToggleProps){
       aria-label={ariaLabel}
       title={ariaLabel}
       disabled={!isReady}
+      data-theme-state={theme}
     >
-      <Icon aria-hidden="true" className="theme-toggle__icon" />
+      <span aria-hidden="true" className="theme-toggle__track">
+        <span className="theme-toggle__icon theme-toggle__icon--sun">
+          <SunIcon aria-hidden="true" className="theme-toggle__icon-graphic" />
+        </span>
+        <span className="theme-toggle__icon theme-toggle__icon--moon">
+          <MoonIcon aria-hidden="true" className="theme-toggle__icon-graphic" />
+        </span>
+        <span className="theme-toggle__thumb">
+          <ThumbIcon aria-hidden="true" className="theme-toggle__thumb-icon" />
+        </span>
+      </span>
     </button>
   );
 }
