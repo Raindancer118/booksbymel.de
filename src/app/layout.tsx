@@ -1,4 +1,6 @@
-import "./../styles/globals.css";
+import "../styles/variables.css";
+import "../styles/typography.css";
+import "../styles/globals.css";
 import type { Metadata } from "next";
 import { site } from "@/lib/seo";
 import Footer from "@/components/Footer";
