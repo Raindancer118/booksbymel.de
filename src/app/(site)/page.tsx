@@ -86,20 +86,9 @@ export default function HomePage() {
   const testimonials = [
     {
       quote:
-        "Amazon liefert Ophelia so schnell, dass unsere Leserunde schon vor dem Wochenende startklar war.",
-      name: "Clara Feldmann",
-      role: "Literaturbloggerin, Kapitelweise",
-    },
-    {
-      quote: "Das Kindle-E-Book war Sekunden nach dem Kauf da – und das Hörbuch begleitet mich zur Arbeit.",
-      name: "Jonas Berger",
-      role: "Rezensent, BücherAtlas",
-    },
-    {
-      quote:
-        "Mels Bonusmaterial auf Amazon fühlt sich an, als würde sie persönlich neben mir auf dem Sofa sitzen.",
-      name: "Lea Hoffmann",
-      role: "Programmleitung, Stadtbibliothek Köln",
+        "Ophelia ist kein Buch, das man einfach liest – es ist eines, das man fühlt. Die Geschichte nimmt einen von der ersten Seite an mit in eine Welt voller Schmerz, Hoffnung und leiser Stärke. Ophelia ist eine Figur, die man nicht vergisst – verletzlich, doch unbeirrbar auf der Suche nach ihrem Platz im Leben.\n Der Schreibstil ist einfühlsam und bildhaft, die Emotionen wirken echt und ungefiltert. Ein Buch, das lange nachhallt und zeigt, dass selbst in den dunkelsten Momenten ein Funken Hoffnung bleibt.",
+      name: "Pantipa Thason",
+      role: "Leserin, Amazon.de",
     },
   ];
 
@@ -114,14 +103,12 @@ export default function HomePage() {
 
       <HeroSection
         eyebrow="Amazon exklusiv"
-        headline="Ophelia zuerst bei Amazon – direkt aus meiner Schreibnacht"
-        tagline="Ich lasse dich via Prime, Kindle und Hörbuch sofort eintauchen – kein Warten, nur Herzklopfen."
+        headline="Ophelia"
+        tagline="Du kannst nicht warten? Musst du nicht."
         primaryCta={{ label: "Jetzt bei Amazon bestellen", href: amazonBuyLink }}
         secondaryCta={{ label: "Newsletter", href: "/newsletter" }}
         stats={[
           { label: "Prime Versand", value: "1–2 Werktage" },
-          { label: "Kindle & Hörbuch", value: "zeitgleich" },
-          { label: "Bonusinhalte", value: "Amazon Library" },
         ]}
         heroImage={{
           src: "/images/covers/Ophelia.jpg",
