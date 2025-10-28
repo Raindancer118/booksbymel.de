@@ -48,7 +48,7 @@ export async function middleware(request: NextRequest) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }
 
-  return NextResponse.rewrite(loginUrl);
+  return NextResponse.redirect(loginUrl);
 }
 
 export const config = {
