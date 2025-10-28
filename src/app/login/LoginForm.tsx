@@ -1,6 +1,7 @@
 "use client";
 
 import { useFormState, useFormStatus } from 'react-dom';
+import { usePathname, useSearchParams } from 'next/navigation';
 import styles from './page.module.css';
 
 type FormState = {
@@ -9,11 +10,18 @@ type FormState = {
 
 type LoginFormProps = {
   action: (state: FormState, formData: FormData) => Promise<FormState>;
+  initialState?: FormState;
+  disabled?: boolean;
+  redirectTo?: string;
 };
 
-const initialState: FormState = {};
+const defaultInitialState: FormState = {};
 
-function PasswordField() {
+type PasswordFieldProps = {
+  disabled?: boolean;
+};
+
+function PasswordField({ disabled }: PasswordFieldProps) {
   const { pending } = useFormStatus();
 
   return (
@@ -23,28 +31,48 @@ function PasswordField() {
       type="password"
       autoComplete="current-password"
       className={styles.input}
-      disabled={pending}
+      disabled={disabled || pending}
       required
     />
   );
 }
 
-function SubmitButton() {
+type SubmitButtonProps = {
+  disabled?: boolean;
+};
+
+function SubmitButton({ disabled }: SubmitButtonProps) {
   const { pending } = useFormStatus();
 
   return (
-    <button className={styles.button} type="submit" disabled={pending}>
+    <button className={styles.button} type="submit" disabled={disabled || pending}>
       {pending ? 'Wird überprüft…' : 'Freischalten'}
     </button>
   );
 }
 
-export default function LoginForm({ action }: LoginFormProps) {
-  const [state, formAction] = useFormState(action, initialState);
+export default function LoginForm({
+  action,
+  initialState,
+  disabled,
+  redirectTo,
+}: LoginFormProps) {
+  const [state, formAction] = useFormState(action, initialState ?? defaultInitialState);
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const fallbackRedirect = (() => {
+    if (redirectTo) {
+      return redirectTo;
+    }
+
+    const search = searchParams?.toString();
+    return search ? `${pathname}?${search}` : pathname;
+  })();
 
   return (
     <main className={styles.container}>
       <form className={styles.form} action={formAction}>
+        <input type="hidden" name="redirectTo" value={fallbackRedirect} />
         <h1 className={styles.heading}>Seite im Aufbau</h1>
         <p className={styles.description}>
           Diese Website befindet sich im Aufbau. Mit dem richtigen Passwort können Sie
@@ -53,9 +81,9 @@ export default function LoginForm({ action }: LoginFormProps) {
         <label className={styles.label} htmlFor="password">
           Passwort
         </label>
-        <PasswordField />
+        <PasswordField disabled={disabled} />
         {state.error ? <p className={styles.error}>{state.error}</p> : null}
-        <SubmitButton />
+        <SubmitButton disabled={disabled} />
       </form>
     </main>
   );
