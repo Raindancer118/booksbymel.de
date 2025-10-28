@@ -2,6 +2,7 @@ import "./../styles/globals.css";
 import type { ReactNode } from "react";
 import type { Metadata } from "next";
 import Script from "next/script";
+import AnalyticsConsent from "@/components/AnalyticsConsent";
 import { site } from "@/lib/seo";
 
 const themeScript = `
@@ -48,20 +49,8 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <Script id="theme-script" strategy="beforeInteractive">
           {themeScript}
         </Script>
-        <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-MN1HKKFFKX"
-          strategy="afterInteractive"
-        />
-        <Script id="gtag-init" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-
-            gtag('config', 'G-MN1HKKFFKX');
-          `}
-        </Script>
         {children}
+        <AnalyticsConsent />
       </body>
     </html>
   );
