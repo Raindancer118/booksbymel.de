@@ -128,7 +128,7 @@ export default function BookDetailPage({ params }: Props){
               <p key={index}>{paragraph}</p>
             ))}
             {book.sampleUrl && (
-              <a className="button ghost" href={book.sampleUrl} target="_blank" rel="noopener noreferrer">
+              <a className="button button--ghost" href={book.sampleUrl} target="_blank" rel="noopener noreferrer">
                 Leseprobe öffnen
               </a>
             )}
