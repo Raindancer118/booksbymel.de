@@ -374,6 +374,10 @@ textarea {
 
 .quote-snippet p {
   margin: 0 0 0.35rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 6;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .book-card__actions {

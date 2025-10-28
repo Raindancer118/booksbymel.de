@@ -197,6 +197,12 @@
   margin: 0;
   font-style: italic;
   color: var(--color-heading);
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 6;
+  line-clamp: 6;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .testimonialMeta {
