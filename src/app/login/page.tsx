@@ -2,12 +2,13 @@ import LoginForm from './LoginForm';
 import { createAuthenticateAction, resolveRedirectTarget } from './authenticate';
 
 type LoginPageProps = {
-  searchParams?: Record<string, string | string[] | undefined>;
+  searchParams?: Promise<{ from?: string | string[] }>;
 };
 
-export default function LoginPage({ searchParams }: LoginPageProps) {
+export default async function LoginPage({ searchParams }: LoginPageProps) {
+  const resolvedSearchParams = (await searchParams) ?? {};
   const secret = process.env.PWT_ACC ?? null;
-  const redirectTarget = resolveRedirectTarget(searchParams?.from);
+  const redirectTarget = resolveRedirectTarget(resolvedSearchParams.from);
   const initialState = secret
     ? undefined
     : { error: 'Die Anmeldung ist derzeit nicht verfügbar.' };

@@ -1,3 +1,4 @@
+import type { Route } from 'next';
 import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
 
@@ -15,12 +16,12 @@ type CreateAuthenticateActionOptions = {
   secret: string | null;
 };
 
-export function resolveRedirectTarget(input: unknown): string {
+export function resolveRedirectTarget(input: unknown): Route {
   if (typeof input === 'string' && input.startsWith('/') && !input.startsWith('//')) {
-    return input;
+    return input as Route;
   }
 
-  return '/';
+  return '/' as Route;
 }
 
 export function createAuthenticateAction({ secret }: CreateAuthenticateActionOptions) {
@@ -46,7 +47,7 @@ export function createAuthenticateAction({ secret }: CreateAuthenticateActionOpt
 
     const redirectTarget = resolveRedirectTarget(formData.get('redirectTo'));
     const token = await deriveSessionToken(secret);
-    const responseCookies = cookies();
+    const responseCookies = await cookies();
 
     responseCookies.set({
       name: AUTH_COOKIE_NAME,
