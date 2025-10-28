@@ -40,13 +40,13 @@ export async function middleware(request: NextRequest) {
     return NextResponse.next();
   }
 
-  if (isApiRoute) {
-    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
-  }
-
   const loginUrl = new URL('/login', request.url);
   const from = `${request.nextUrl.pathname}${request.nextUrl.search}`;
   loginUrl.searchParams.set('from', from);
+
+  if (isApiRoute) {
+    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+  }
 
   return NextResponse.redirect(loginUrl);
 }
