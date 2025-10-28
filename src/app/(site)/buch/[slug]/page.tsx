@@ -6,14 +6,16 @@ import SynopsisTabs from "@/components/SynopsisTabs";
 import QuoteCarousel from "@/components/QuoteCarousel";
 import type { Metadata } from "next";
 
-type Props = { params: { slug: string } };
+type RouteParams = { slug: string };
+type Props = { params?: Promise<RouteParams> };
 
-export async function generateStaticParams(){
+export async function generateStaticParams() {
   return getBooks().map(b => ({ slug: b.slug }));
 }
 
-export function generateMetadata({ params }: Props): Metadata {
-  const book = getBook(params.slug);
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const resolvedParams = params ? await params : null;
+  const book = resolvedParams ? getBook(resolvedParams.slug) : undefined;
   if (!book) {
     return { title: "Buch nicht gefunden" };
   }
@@ -39,8 +41,9 @@ export function generateMetadata({ params }: Props): Metadata {
   };
 }
 
-export default function BookDetailPage({ params }: Props){
-  const book = getBook(params.slug);
+export default async function BookDetailPage({ params }: Props) {
+  const resolvedParams = params ? await params : null;
+  const book = resolvedParams ? getBook(resolvedParams.slug) : undefined;
   if (!book) return <main className="container"><h1>Nicht gefunden</h1></main>;
 
   const genres = book.genres ?? [];

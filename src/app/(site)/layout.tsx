@@ -11,7 +11,8 @@ const unavailableState = { error: "Die Anmeldung ist derzeit nicht verfügbar." 
 
 export default async function SiteLayout({ children }: { children: ReactNode }) {
   const secret = process.env.PWT_ACC ?? null;
-  const token = cookies().get(AUTH_COOKIE_NAME)?.value;
+  const cookieStore = await cookies();
+  const token = cookieStore.get(AUTH_COOKIE_NAME)?.value;
   const isAuthenticated = secret
     ? await verifySessionToken(token, secret)
     : false;
