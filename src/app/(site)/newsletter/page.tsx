@@ -1,6 +1,8 @@
 import NewsletterForm from "@/components/NewsletterForm";
 import Seo from "@/components/Seo";
 
+export const runtime = "edge";
+
 export default function NewsletterPage(){
   return (
     <main className="container">

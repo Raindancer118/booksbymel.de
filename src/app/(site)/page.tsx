@@ -8,6 +8,8 @@ import { getBooks } from "@/lib/books";
 import { getEvents } from "@/lib/events";
 import styles from "./page.module.css";
 
+export const runtime = "edge";
+
 export default function HomePage() {
   const books = getBooks();
   const featuredBooks = books.slice(0, 4);

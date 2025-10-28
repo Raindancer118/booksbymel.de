@@ -5,6 +5,8 @@ import Script from "next/script";
 import AnalyticsConsent from "@/components/AnalyticsConsent";
 import { site } from "@/lib/seo";
 
+export const runtime = "edge";
+
 const themeScript = `
 (() => {
   const storageKey = 'theme-preference';

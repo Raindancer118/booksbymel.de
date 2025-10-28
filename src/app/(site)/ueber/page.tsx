@@ -3,6 +3,8 @@ import FeatureGrid from "@/components/FeatureGrid";
 import Seo from "@/components/Seo";
 import styles from "./page.module.css";
 
+export const runtime = "edge";
+
 const heroHighlights = [
   "Romane über verletzliche Stärke, weibliche Freundschaft und zweite Chancen",
   "Amazon-exklusive Bonuskapitel, Hörbuch-Extras und Live-Schreibsessions",

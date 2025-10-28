@@ -1,5 +1,7 @@
 import Seo from "@/components/Seo";
 
+export const runtime = "edge";
+
 export default function PressePage(){
   return (
     <main className="container">

@@ -2,6 +2,8 @@ import { getBooks } from "@/lib/books";
 import BookCard from "@/components/BookCard";
 import Seo from "@/components/Seo";
 
+export const runtime = "edge";
+
 export default function BooksPage(){
   const books = getBooks();
   return (
