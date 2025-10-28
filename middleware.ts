@@ -3,6 +3,9 @@ import { AUTH_COOKIE_NAME, verifySessionToken } from './src/lib/auth';
 
 const PUBLIC_FILE = /\.(.*)$/;
 
+const authSecret = process.env.PWT_ACC ?? '';
+const authConfigured = authSecret.length > 0;
+
 export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
@@ -14,14 +17,12 @@ export async function middleware(request: NextRequest) {
     return NextResponse.next();
   }
 
-  const secret = process.env.PWT_ACC;
-
-  if (!secret) {
-    return new NextResponse('Authentication is not configured.', { status: 500 });
+  if (!authConfigured) {
+    return NextResponse.next();
   }
 
   const token = request.cookies.get(AUTH_COOKIE_NAME)?.value;
-  const isAuthenticated = await verifySessionToken(token, secret);
+  const isAuthenticated = await verifySessionToken(token, authSecret);
   const isApiRoute = pathname.startsWith('/api');
 
   if (isAuthenticated) {
