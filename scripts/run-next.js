@@ -4,7 +4,7 @@ const { spawn } = require('node:child_process');
 const mode = process.argv[2] ?? 'dev';
 const extraArgs = process.argv.slice(3);
 
-const host = process.env.HOST || '0.0.0.0';
+const host = process.env.HOST || '127.0.0.1';
 const defaultPort = mode === 'dev' ? '3000' : '3000';
 const port = process.env.PORT || defaultPort;
 
