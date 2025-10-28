@@ -8,7 +8,7 @@ export default function BooksPage(){
     <main className="container">
       <Seo title="Bücher" description="Alle Titel auf einen Blick." ogImage="/images/og/default.jpg" />
       <h1>Bücher</h1>
-      <div className="grid" style={{gridTemplateColumns:'repeat(auto-fit, minmax(240px, 1fr))'}}>
+      <div className="grid grid--auto-fit">
         {books.map(b => <BookCard key={b.slug} book={b} />)}
       </div>
     </main>

@@ -1,18 +1,22 @@
 import type { RetailerLink } from "@/lib/types";
 
 export default function RetailerButtons({ links }: { links: RetailerLink[] }) {
+  if (!links.length) {
+    return null;
+  }
+
   return (
-    <div style={{display:"flex", gap:8, flexWrap:"wrap"}}>
-      {links.map(r => (
+    <div className="button-row">
+      {links.map(({ name, url }) => (
         <a
-          key={r.name}
-          href={r.url}
+          key={name}
+          href={url}
           className="button"
-          aria-label={`Bei ${r.name} kaufen`}
+          aria-label={`Bei ${name} kaufen`}
           rel="noopener noreferrer"
           target="_blank"
         >
-          {r.name}
+          {name}
         </a>
       ))}
     </div>

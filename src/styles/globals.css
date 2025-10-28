@@ -277,6 +277,48 @@ textarea {
   gap: var(--spacing-md);
 }
 
+.grid--auto-fit {
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+.list-reset {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.button-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-xs);
+}
+
+.event-list__item {
+  display: grid;
+  gap: var(--spacing-2xs);
+}
+
+.event-list__datetime {
+  font-weight: 600;
+  color: var(--color-heading);
+}
+
+.event-list__details {
+  margin: 0;
+  color: var(--muted);
+}
+
+.event-list__link {
+  margin-left: var(--spacing-2xs);
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+}
+
+.event-list__link:hover,
+.event-list__link:focus-visible {
+  color: var(--color-accent);
+}
+
 .book-card {
   display: grid;
   gap: var(--spacing-md);

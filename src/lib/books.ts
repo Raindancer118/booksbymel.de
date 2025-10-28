@@ -1,10 +1,12 @@
 import data from "@/content/books.json";
 import type { Book } from "./types";
 
-export function getBooks(): Book[] {
-  return (data as Book[]).slice();
+const booksData: ReadonlyArray<Book> = Object.freeze([...(data as Book[])]);
+
+export function getBooks(): ReadonlyArray<Book> {
+  return booksData;
 }
 
 export function getBook(slug: string): Book | undefined {
-  return getBooks().find(b => b.slug === slug);
+  return booksData.find(book => book.slug === slug);
 }
