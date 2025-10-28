@@ -5,7 +5,6 @@ import {
   AUTH_COOKIE_NAME,
   SESSION_MAX_AGE_SECONDS,
   deriveSessionToken,
-  verifySessionToken,
 } from '@/lib/auth';
 
 type LoginPageProps = {
@@ -31,16 +30,6 @@ function resolveRedirectTarget(fromParam: string | string[] | undefined): string
 export default async function LoginPage({ searchParams }: LoginPageProps) {
   const secret = process.env.PWT_ACC ?? null;
   const redirectTarget = resolveRedirectTarget(searchParams?.from);
-  const cookieStore = cookies();
-  const existingToken = cookieStore.get(AUTH_COOKIE_NAME)?.value;
-  const isAuthenticated =
-    secret && existingToken
-      ? await verifySessionToken(existingToken, secret)
-      : false;
-
-  if (isAuthenticated) {
-    redirect(redirectTarget);
-  }
 
   async function authenticate(_: FormState, formData: FormData): Promise<FormState> {
     'use server';
