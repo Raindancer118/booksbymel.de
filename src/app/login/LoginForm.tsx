@@ -9,11 +9,17 @@ type FormState = {
 
 type LoginFormProps = {
   action: (state: FormState, formData: FormData) => Promise<FormState>;
+  initialState?: FormState;
+  disabled?: boolean;
 };
 
-const initialState: FormState = {};
+const defaultInitialState: FormState = {};
 
-function PasswordField() {
+type PasswordFieldProps = {
+  disabled?: boolean;
+};
+
+function PasswordField({ disabled }: PasswordFieldProps) {
   const { pending } = useFormStatus();
 
   return (
@@ -23,24 +29,28 @@ function PasswordField() {
       type="password"
       autoComplete="current-password"
       className={styles.input}
-      disabled={pending}
+      disabled={disabled || pending}
       required
     />
   );
 }
 
-function SubmitButton() {
+type SubmitButtonProps = {
+  disabled?: boolean;
+};
+
+function SubmitButton({ disabled }: SubmitButtonProps) {
   const { pending } = useFormStatus();
 
   return (
-    <button className={styles.button} type="submit" disabled={pending}>
+    <button className={styles.button} type="submit" disabled={disabled || pending}>
       {pending ? 'Wird überprüft…' : 'Freischalten'}
     </button>
   );
 }
 
-export default function LoginForm({ action }: LoginFormProps) {
-  const [state, formAction] = useFormState(action, initialState);
+export default function LoginForm({ action, initialState, disabled }: LoginFormProps) {
+  const [state, formAction] = useFormState(action, initialState ?? defaultInitialState);
 
   return (
     <main className={styles.container}>
@@ -53,9 +63,9 @@ export default function LoginForm({ action }: LoginFormProps) {
         <label className={styles.label} htmlFor="password">
           Passwort
         </label>
-        <PasswordField />
+        <PasswordField disabled={disabled} />
         {state.error ? <p className={styles.error}>{state.error}</p> : null}
-        <SubmitButton />
+        <SubmitButton disabled={disabled} />
       </form>
     </main>
   );
