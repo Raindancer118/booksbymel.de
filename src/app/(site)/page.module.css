@@ -40,6 +40,18 @@
   box-shadow: var(--shadow-sm);
 }
 
+.spotlightImageWrapper::before {
+  content: "";
+  position: absolute;
+  inset: -30% -20%;
+  background: radial-gradient(circle at 30% 20%, var(--glow-gold), transparent 65%),
+    radial-gradient(circle at 70% 80%, rgba(34, 61, 58, 0.45), transparent 70%);
+  filter: blur(40px);
+  opacity: 0.3;
+  animation: auroraDrift 32s ease-in-out infinite;
+  pointer-events: none;
+}
+
 .spotlightImageWrapper :global(img) {
   object-fit: cover;
 }
@@ -52,6 +64,20 @@
   border-radius: var(--radius-lg);
   padding: var(--spacing-lg);
   box-shadow: var(--shadow-sm);
+  position: relative;
+  overflow: hidden;
+}
+
+.amazonContent::after {
+  content: "";
+  position: absolute;
+  inset: -40% 5% -40% auto;
+  width: 45%;
+  background: linear-gradient(90deg, transparent, rgba(181, 154, 90, 0.35), transparent);
+  opacity: 0.25;
+  transform: translateX(-120%) skewX(-12deg);
+  animation: shimmerPulse 22s linear infinite;
+  pointer-events: none;
 }
 
 .kicker {
@@ -134,6 +160,37 @@
   display: grid;
   gap: var(--spacing-md);
   box-shadow: var(--shadow-sm);
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.newsletterCta::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  background: conic-gradient(from 90deg, rgba(181, 154, 90, 0.55), transparent 45%, rgba(250, 247, 242, 0.45) 65%, transparent 85%);
+  filter: blur(0);
+  opacity: 0.45;
+  animation: auroraDrift 18s linear infinite;
+  pointer-events: none;
+}
+
+.newsletterCta::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 20% 20%, rgba(250, 247, 242, 0.15), transparent 60%),
+    radial-gradient(circle at 80% 40%, rgba(181, 154, 90, 0.2), transparent 70%);
+  mix-blend-mode: screen;
+  opacity: 0.35;
+  pointer-events: none;
+}
+
+.newsletterCta > * {
+  position: relative;
+  z-index: 1;
 }
 
 .newsletterCopy h2 {
@@ -179,5 +236,14 @@
 
 .newsletterCta :global(.newsletter-form__error) {
   color: #ffd6c2;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .spotlightImageWrapper::before,
+  .amazonContent::after,
+  .newsletterCta::before,
+  .newsletterCta::after {
+    animation: none !important;
+  }
 }
 
