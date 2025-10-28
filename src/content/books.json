@@ -50,101 +50,38 @@
     ]
   },
   {
-    "title": "Das Haus der Nachtblumen",
-    "slug": "das-haus-der-nachtblumen",
-    "tagline": "Ein Herrenhaus voller Düfte, Geheimnisse – und einer Liebe, die nicht vergehen will.",
-    "blurb": "Als Parfümeurin Tessa das verlassene Familienanwesen erbt, erwacht die Vergangenheit in jedem Raum – und lockt eine alte Flamme zurück in ihr Leben.",
-    "cover": "/images/covers/DasHausDerNachtblumen.svg",
-    "isbn": "978-3752143984",
-    "publicationDate": "Frühjahr 2026",
-    "genres": ["Gothic Romance", "Familiendrama", "Mystery"],
-    "readingOrder": "Nachtblumen-Dilogie · Band 1",
-    "synopses": [
-      {
-        "title": "Das Erbe",
-        "content": "Tessa kehrt nach Jahren in die norddeutsche Marsch zurück, um das herrschaftliche Nachtblumenhaus zu verkaufen. Doch zwischen verstaubten Flakons und verblichenen Porträts scheint der Geist ihrer Großmutter weiter zu wachen." 
-      },
-      {
-        "title": "Der Duft",
-        "content": "Im Archiv entdeckt Tessa geheime Duftformeln, die Emotionen hervorrufen, als würden sie Erinnerungen destillieren. Als ihre Jugendliebe Mira auftaucht, prallen verschüttete Gefühle und Familiengeheimnisse aufeinander." 
-      },
-      {
-        "title": "Die Entscheidung",
-        "content": "Um das Haus zu retten, muss Tessa den letzten Duft ihrer Großmutter vollenden – und herausfinden, warum die Nachtblumen einst verbrannten. Dabei lernt sie, dass Wurzeln manchmal dort wachsen, wo man sie am wenigsten erwartet." 
-      }
-    ],
-    "excerpt": [
-      "Der Geruch von Iris und kalter Asche hing in der Luft. Tessa legte die Hand auf den Geländerknauf und spürte ein Vibrieren, als würde das Haus ihren Puls messen.",
-      "\"Du hast uns zu lange vergessen\", flüsterte der Wind durch zerbrochene Fenster. Mira trat neben sie und lächelte, als hätten sie nie aufgehört, zueinander zu gehören."
-    ],
-    "sampleUrl": "/samples/nachtblumen-leseprobe.txt",
-    "formats": [
-      { "format": "Hardcover", "details": "384 Seiten" },
-      { "format": "E-Book", "details": "EPUB & Kindle" }
-    ],
-    "retailers": [
-      { "name": "Buchhandlung Lieblingsseiten", "url": "https://lieblingsseiten.de" },
-      { "name": "Hugendubel", "url": "https://www.hugendubel.de" }
-    ],
-    "testimonials": [
-      {
-        "quote": "Die Düfte steigen aus den Seiten – sinnlich, geheimnisvoll, süchtig machend.",
-        "source": "Bookstagram @paperperfume"
-      },
-      {
-        "quote": "Ein Haus als lebendiger Charakter und eine queere Liebe, die leuchtet.",
-        "source": "Autorin Leyla Can",
-        "role": "Kollegin"
-      }
-    ]
-  },
-  {
-    "title": "Gezeitenherz",
-    "slug": "gezeitenherz",
-    "tagline": "Zwei Frauen, ein Küstenstädtchen und eine Entscheidung zwischen Berufung und Zuhause.",
-    "blurb": "Als Notärztin Livia nach einem Skandal in ihren Heimatort zurückkehrt, trifft sie auf die Fischerin Runa – und auf ein Meer aus ungelösten Gefühlen.",
-    "cover": "/images/covers/Gezeitenherz.svg",
-    "isbn": "978-3948579201",
-    "publicationDate": "Herbst 2026",
-    "genres": ["Queere Feelgood", "Kleinstadtroman", "Slow Burn"],
+    "title": "The Auctioned Bride",
+    "slug": "the-auctioned-bride",
+    "tagline": "To save her family, she sold her freedom. To satisfy his obsession, he bought her life.",
+    "blurb": "Maeve Valentine versteigert ein Jahr ihres Lebens, um die Schulden ihrer Familie zu begleichen – und landet in den Händen des Mannes, dessen Zukunft sie einst zerstörte.",
+    "cover": "/images/covers/TheAuctionedBride.svg",
+    "isbn": "979-8294322847",
+    "genres": ["Dark Romance", "Romantic Suspense", "Psychologischer Thriller"],
     "readingOrder": "Standalone",
     "synopses": [
       {
-        "title": "Rückkehr",
-        "content": "Der Sturm, der Livia zwang, das Meer zu retten und ihre Karriere zu verlieren, bringt sie nun zurück nach Hvidhavn. Dort kämpft sie gegen Vorurteile – und gegen die Erinnerungen an Runa, die sie damals zurückließ." 
+        "title": "Der Vertrag",
+        "content": "Auf der geheimen Auktion verkauft Maeve ein Jahr ihrer Freiheit. Sie rechnet mit einem anonymen Käufer – bis Damian Ashwood, der Junge aus ihrer Vergangenheit, das Höchstgebot abgibt."
       },
       {
-        "title": "Aufbruch",
-        "content": "Runa versucht, den Familienbetrieb zu modernisieren, während der Hafen vor dem Aus steht. Gemeinsam mit Livia sucht sie nach neuen Wegen – und spürt, dass alte Wunden noch immer salzig brennen." 
+        "title": "Die Rache",
+        "content": "Damian hat Jahre darauf gewartet, Maeve unter seine Kontrolle zu bringen. Jede Regel im goldenen Käfig erinnert sie daran, dass er ihr die Schuld für seinen Verlust gibt."
       },
       {
-        "title": "Ankommen",
-        "content": "Als ein Offshore-Projekt den Ort spaltet, müssen Runa und Livia entscheiden, wofür sie kämpfen: für ihre Träume oder füreinander. Das Meer weiß längst, was ihr Herz braucht." 
+        "title": "Das Feuer",
+        "content": "Zwischen erzwungenem Gehorsam und wachsender Obsession beginnt Maeve, sich zu wehren. Je mehr sie kämpft, desto dünner wird die Grenze zwischen Vergeltung und Verlangen."
       }
     ],
     "excerpt": [
-      "Das Meer roch nach Eisen und Versprechen. Livia stand am Kai und wartete, bis Runas Boot durch den Nebel schnitt – wie damals, als alles begann.",
-      "Runa lachte, das ferne Donnern eines kommenden Sturms im Rücken. \"Bleib diesmal\", sagte sie. Es klang nicht wie eine Bitte, sondern wie ein Zuhause."
+      "Als das Spotlight auf sie fiel, schmeckten Maeves Lippen nach Kupfer und Angst. Ein Jahr, flüsterte sie sich zu. Nur ein Jahr.",
+      "Damian streifte ihr den Ring über und lächelte kalt. \"Ich habe dich nicht gekauft, um dich zu verlieren\", sagte er. \"Ich habe dich gekauft, um mich zu erinnern.\""
     ],
-    "sampleUrl": "/samples/gezeitenherz-kapitel-eins.txt",
     "formats": [
-      { "format": "Taschenbuch", "details": "320 Seiten" },
-      { "format": "E-Book", "details": "EPUB & Kindle" },
-      { "format": "Hörbuch", "details": "Mit zwei Sprecherinnen" }
+      { "format": "Taschenbuch", "details": "424 Seiten · 14,81 €" },
+      { "format": "E-Book", "details": "Kindle & Kindle Unlimited" }
     ],
     "retailers": [
-      { "name": "Genialokal", "url": "https://www.genialokal.de" },
-      { "name": "Amazon", "url": "https://www.amazon.de" }
-    ],
-    "testimonials": [
-      {
-        "quote": "Salzige Luft, weiche Herzen – ein Trostpflaster für alle, die an Liebe glauben.",
-        "source": "Blog \"Leseliebe am Meer\""
-      },
-      {
-        "quote": "Die Dialoge sind so echt, dass man glaubt, mit am Kai zu stehen.",
-        "source": "Magazin \"Nordwind\""
-      }
+      { "name": "Amazon.de", "url": "https://www.amazon.de/Auctioned-Bride-Melanie-Thason/dp/B0FK7KBDBV/" }
     ]
   }
 ]
