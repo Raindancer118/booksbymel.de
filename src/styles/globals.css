@@ -15,9 +15,9 @@ body {
   min-height: 100%;
   background-color: var(--color-bg);
   background-image:
-    radial-gradient(140% 120% at 12% 8%, color-mix(in srgb, var(--color-emerald-200) 55%, transparent), transparent 70%),
-    radial-gradient(120% 120% at 88% 0%, color-mix(in srgb, var(--color-emerald-300) 60%, transparent), transparent 75%),
-    linear-gradient(180deg, color-mix(in srgb, var(--color-bg) 92%, white 8%), color-mix(in srgb, var(--color-bg-muted) 75%, var(--color-emerald-800) 25%)),
+    radial-gradient(140% 120% at 12% 8%, color-mix(in srgb, var(--color-surface-muted) 50%, transparent), transparent 70%),
+    radial-gradient(120% 120% at 88% 0%, color-mix(in srgb, var(--color-bg-muted) 65%, transparent), transparent 75%),
+    linear-gradient(180deg, color-mix(in srgb, var(--color-bg) 94%, white 6%), color-mix(in srgb, var(--color-bg-muted) 70%, var(--color-surface-contrast) 30%)),
     url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160"%3E%3Cfilter id="n"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="160" height="160" filter="url(%23n)" opacity="0.08"/%3E%3C/svg%3E');
   background-attachment: fixed;
   background-size: 100% 100%, 100% 100%, 100% 100%, 220px 220px;
@@ -98,7 +98,7 @@ img {
   inset-inline: clamp(0.5rem, 3vw, 1.5rem);
   bottom: 0;
   height: 1px;
-  background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--color-emerald-400) 40%, transparent), transparent);
+  background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--color-surface-contrast) 25%, transparent), transparent);
   opacity: 0.4;
 }
 
@@ -178,9 +178,9 @@ img {
 
 .card {
   position: relative;
-  background: linear-gradient(145deg, color-mix(in srgb, var(--color-surface) 88%, white 12%), color-mix(in srgb, var(--color-surface-muted) 65%, var(--color-emerald-100) 35%));
+  background: linear-gradient(145deg, color-mix(in srgb, var(--color-surface) 90%, white 10%), color-mix(in srgb, var(--color-surface-muted) 70%, transparent 30%));
   border-radius: var(--radius-lg);
-  border: 1px solid color-mix(in srgb, var(--color-emerald-200) 45%, white 55%);
+  border: 1px solid color-mix(in srgb, var(--color-bg-muted) 55%, transparent);
   box-shadow: var(--shadow-sm);
   padding: clamp(var(--space-lg), 4vw, var(--space-xl));
   backdrop-filter: blur(18px);
@@ -192,7 +192,7 @@ img {
   position: absolute;
   inset: 1px;
   border-radius: calc(var(--radius-lg) - 12px);
-  border: 1px solid color-mix(in srgb, var(--color-emerald-200) 30%, transparent);
+  border: 1px solid color-mix(in srgb, var(--color-bg-muted) 35%, transparent);
   pointer-events: none;
   opacity: 0.5;
 }
@@ -224,44 +224,44 @@ img {
   font-weight: var(--font-weight-medium);
   font-size: var(--font-size-sm);
   letter-spacing: 0.02em;
-  background: linear-gradient(135deg, color-mix(in srgb, var(--color-accent) 95%, white 5%), color-mix(in srgb, var(--color-accent) 72%, var(--color-emerald-700) 28%));
+  background: linear-gradient(135deg, color-mix(in srgb, var(--color-accent) 96%, white 4%), color-mix(in srgb, var(--color-accent) 78%, var(--color-surface-contrast) 22%));
   color: var(--color-accent-contrast);
-  box-shadow: 0 12px 30px rgba(64, 48, 16, 0.22);
+  box-shadow: 0 14px 32px rgba(51, 40, 18, 0.22);
   transition: transform var(--transition-base), box-shadow var(--transition-base), background var(--transition-base), color var(--transition-base);
 }
 
 .button:hover,
 .button:focus-visible {
   transform: translateY(-1px);
-  background: linear-gradient(135deg, color-mix(in srgb, var(--color-accent) 98%, white 2%), color-mix(in srgb, var(--color-accent) 85%, var(--color-emerald-800) 15%));
+  background: linear-gradient(135deg, color-mix(in srgb, var(--color-accent) 99%, white 1%), color-mix(in srgb, var(--color-accent) 88%, var(--color-surface-contrast) 12%));
   box-shadow: var(--shadow-sm);
 }
 
 .button--soft {
-  background: color-mix(in srgb, var(--color-accent) 15%, var(--color-surface) 85%);
-  color: color-mix(in srgb, var(--color-accent) 75%, var(--color-accent-contrast) 25%);
-  border-color: color-mix(in srgb, var(--color-accent) 40%, transparent);
+  background: color-mix(in srgb, var(--color-accent) 18%, var(--color-surface) 82%);
+  color: color-mix(in srgb, var(--color-accent-contrast) 70%, var(--color-accent) 30%);
+  border-color: color-mix(in srgb, var(--color-accent) 35%, transparent);
   box-shadow: none;
 }
 
 .button--soft:hover,
 .button--soft:focus-visible {
-  background: color-mix(in srgb, var(--color-accent) 25%, var(--color-surface) 75%);
-  color: color-mix(in srgb, var(--color-accent) 85%, var(--color-accent-contrast) 15%);
+  background: color-mix(in srgb, var(--color-accent) 28%, var(--color-surface) 72%);
+  color: color-mix(in srgb, var(--color-accent-contrast) 60%, var(--color-accent) 40%);
 }
 
 .button--ghost {
   background: transparent;
   color: var(--color-text);
-  border-color: color-mix(in srgb, var(--color-emerald-300) 40%, transparent);
+  border-color: color-mix(in srgb, var(--color-surface-contrast) 18%, transparent);
   box-shadow: none;
 }
 
 .button--ghost:hover,
 .button--ghost:focus-visible {
-  color: color-mix(in srgb, var(--color-text) 75%, var(--color-accent) 25%);
-  border-color: color-mix(in srgb, var(--color-accent) 60%, transparent);
-  box-shadow: 0 6px 14px rgba(24, 36, 30, 0.12);
+  color: color-mix(in srgb, var(--color-text) 65%, var(--color-accent) 35%);
+  border-color: color-mix(in srgb, var(--color-accent) 55%, transparent);
+  box-shadow: 0 6px 14px rgba(28, 53, 45, 0.12);
 }
 
 .grid {
@@ -273,10 +273,10 @@ img {
   position: sticky;
   top: 0;
   z-index: 10;
-  backdrop-filter: blur(18px);
-  background: color-mix(in srgb, var(--color-surface) 85%, rgba(255, 255, 255, 0.1) 15%);
-  border-bottom: 1px solid color-mix(in srgb, var(--color-emerald-200) 40%, transparent);
-  box-shadow: 0 22px 60px rgba(12, 28, 22, 0.18);
+  background: var(--color-surface-contrast);
+  border-bottom: 1px solid color-mix(in srgb, var(--color-surface-contrast) 65%, transparent);
+  box-shadow: 0 22px 60px rgba(28, 53, 45, 0.35);
+  color: var(--color-neutral-50);
 }
 
 .site-header__inner {
@@ -293,7 +293,7 @@ img {
   font-weight: var(--font-weight-bold);
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: color-mix(in srgb, var(--color-text) 70%, var(--color-emerald-700) 30%);
+  color: var(--color-neutral-50);
 }
 
 .site-nav {
@@ -316,20 +316,20 @@ img {
   border-radius: 999px;
   font-weight: var(--font-weight-medium);
   font-size: var(--font-size-sm);
-  color: var(--color-text);
+  color: var(--color-neutral-50);
   transition: background var(--transition-base), color var(--transition-base), box-shadow var(--transition-base);
 }
 
 .site-nav__link:hover,
 .site-nav__link:focus-visible {
-  background: color-mix(in srgb, var(--color-accent) 15%, var(--color-surface) 85%);
-  color: color-mix(in srgb, var(--color-accent) 70%, var(--color-text) 30%);
-  box-shadow: 0 10px 24px rgba(12, 28, 22, 0.12);
+  background: color-mix(in srgb, var(--color-accent) 28%, transparent);
+  color: var(--color-neutral-50);
+  box-shadow: 0 12px 26px rgba(12, 28, 22, 0.22);
 }
 
 .site-nav__link[aria-current='page'] {
-  background: color-mix(in srgb, var(--color-accent) 20%, var(--color-surface) 80%);
-  color: color-mix(in srgb, var(--color-accent) 65%, var(--color-text) 35%);
+  background: color-mix(in srgb, var(--color-accent) 40%, transparent);
+  color: var(--color-neutral-50);
   font-weight: var(--font-weight-bold);
 }
 
@@ -345,19 +345,19 @@ img {
   height: 2.75rem;
   padding: 0;
   border-radius: 50%;
-  border: 1px solid color-mix(in srgb, var(--color-emerald-300) 60%, transparent);
-  background: color-mix(in srgb, var(--color-surface) 90%, rgba(255, 255, 255, 0.1) 10%);
-  color: var(--color-text);
+  border: 1px solid color-mix(in srgb, var(--color-neutral-50) 35%, transparent);
+  background: color-mix(in srgb, var(--color-neutral-50) 85%, transparent 15%);
+  color: var(--color-surface-contrast);
   font-size: 1rem;
   transition: background var(--transition-base), color var(--transition-base), border-color var(--transition-base), box-shadow var(--transition-base);
 }
 
 .site-nav__toggle:hover,
 .site-nav__toggle:focus-visible {
-  background: color-mix(in srgb, var(--color-accent) 18%, var(--color-surface) 82%);
-  color: color-mix(in srgb, var(--color-text) 70%, var(--color-accent) 30%);
-  border-color: color-mix(in srgb, var(--color-accent) 50%, transparent);
-  box-shadow: 0 16px 36px rgba(12, 28, 22, 0.18);
+  background: color-mix(in srgb, var(--color-accent) 28%, var(--color-neutral-50) 72%);
+  color: var(--color-surface-contrast);
+  border-color: color-mix(in srgb, var(--color-accent) 55%, transparent);
+  box-shadow: 0 16px 36px rgba(12, 28, 22, 0.24);
 }
 
 .site-main {
@@ -366,9 +366,9 @@ img {
 
 .site-footer {
   margin-top: var(--space-3xl);
-  background: linear-gradient(180deg, color-mix(in srgb, var(--color-surface) 92%, white 8%), color-mix(in srgb, var(--color-bg-muted) 75%, var(--color-emerald-700) 25%));
-  border-top: 1px solid color-mix(in srgb, var(--color-emerald-200) 45%, transparent);
-  box-shadow: 0 -18px 48px rgba(12, 28, 22, 0.16);
+  background: linear-gradient(180deg, color-mix(in srgb, var(--color-surface) 94%, white 6%), color-mix(in srgb, var(--color-bg-muted) 78%, var(--color-surface-contrast) 22%));
+  border-top: 1px solid color-mix(in srgb, var(--color-surface-contrast) 18%, transparent);
+  box-shadow: 0 -18px 42px rgba(28, 53, 45, 0.18);
 }
 
 .site-footer__inner {
@@ -386,7 +386,7 @@ img {
 .site-footer__nav a {
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-medium);
-  color: color-mix(in srgb, var(--color-text) 70%, var(--color-emerald-600) 30%);
+  color: color-mix(in srgb, var(--color-text) 65%, var(--color-accent) 35%);
 }
 
 @media (min-width: 48rem) {
@@ -401,9 +401,9 @@ img {
     position: absolute;
     inset-inline: clamp(1rem, 4vw, 1.5rem);
     top: calc(100% + var(--space-xs));
-    background: linear-gradient(160deg, color-mix(in srgb, var(--color-surface) 94%, white 6%), color-mix(in srgb, var(--color-bg-muted) 65%, var(--color-emerald-200) 35%));
+    background: color-mix(in srgb, var(--color-surface-contrast) 92%, rgba(0, 0, 0, 0.08) 8%);
     border-radius: var(--radius-lg);
-    border: 1px solid color-mix(in srgb, var(--color-emerald-200) 50%, transparent);
+    border: 1px solid color-mix(in srgb, var(--color-surface-contrast) 65%, transparent);
     box-shadow: var(--shadow-lg);
     padding: var(--space-md);
     flex-direction: column;
@@ -459,28 +459,28 @@ img {
 @media (prefers-color-scheme: dark) {
   body {
     background-image:
-      radial-gradient(120% 120% at 0% 0%, rgba(72, 109, 90, 0.28), transparent 70%),
-      radial-gradient(120% 120% at 100% 0%, rgba(38, 67, 54, 0.4), transparent 75%),
-      linear-gradient(180deg, rgba(12, 24, 20, 0.96), rgba(8, 16, 14, 0.92)),
+      radial-gradient(120% 120% at 0% 0%, rgba(56, 92, 77, 0.35), transparent 70%),
+      radial-gradient(120% 120% at 100% 0%, rgba(38, 67, 57, 0.42), transparent 75%),
+      linear-gradient(180deg, rgba(13, 28, 23, 0.95), rgba(10, 22, 18, 0.9)),
       url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160"%3E%3Cfilter id="n"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="1.1" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="160" height="160" filter="url(%23n)" opacity="0.12"/%3E%3C/svg%3E');
     background-blend-mode: screen, soft-light, normal, multiply;
   }
 
   .site-header {
-    background: color-mix(in srgb, rgba(20, 34, 28, 0.92) 80%, rgba(12, 24, 20, 0.6) 20%);
-    border-bottom: 1px solid color-mix(in srgb, var(--color-emerald-700) 55%, transparent);
+    background: color-mix(in srgb, rgba(20, 44, 36, 0.92) 85%, rgba(12, 26, 21, 0.6) 15%);
+    border-bottom: 1px solid color-mix(in srgb, var(--color-surface-contrast) 35%, transparent);
   }
 
   .site-nav__toggle {
-    border-color: color-mix(in srgb, var(--color-emerald-700) 55%, transparent);
+    border-color: color-mix(in srgb, var(--color-neutral-50) 35%, transparent);
   }
 
   .site-nav__link {
-    color: var(--color-text);
+    color: var(--color-neutral-50);
   }
 
   .site-footer {
-    border-top: 1px solid color-mix(in srgb, var(--color-emerald-700) 45%, transparent);
+    border-top: 1px solid color-mix(in srgb, var(--color-surface-contrast) 35%, transparent);
     box-shadow: 0 -18px 52px rgba(0, 0, 0, 0.4);
   }
 }
