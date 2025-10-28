@@ -1,6 +1,8 @@
 import EventList from "@/components/EventList";
 import Seo from "@/components/Seo";
 
+export const runtime = "edge";
+
 export default function EventsPage(){
   return (
     <main className="container">

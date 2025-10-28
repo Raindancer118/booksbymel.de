@@ -7,6 +7,8 @@ import { AUTH_COOKIE_NAME, verifySessionToken } from "@/lib/auth";
 import LoginForm from "../login/LoginForm";
 import { createAuthenticateAction } from "../login/authenticate";
 
+export const runtime = "edge";
+
 const unavailableState = { error: "Die Anmeldung ist derzeit nicht verfügbar." } as const;
 
 export default async function SiteLayout({ children }: { children: ReactNode }) {

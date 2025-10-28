@@ -1,6 +1,8 @@
 import LoginForm from './LoginForm';
 import { createAuthenticateAction, resolveRedirectTarget } from './authenticate';
 
+export const runtime = "edge";
+
 type LoginPageProps = {
   searchParams?: Promise<{ from?: string | string[] }>;
 };

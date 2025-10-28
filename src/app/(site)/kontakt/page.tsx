@@ -1,5 +1,7 @@
 import Seo from "@/components/Seo";
 
+export const runtime = "edge";
+
 export default function KontaktPage(){
   return (
     <main className="container">
