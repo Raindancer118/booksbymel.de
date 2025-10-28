@@ -1,9 +1,15 @@
+
 .hero {
   margin-block: var(--spacing-xl);
   padding: var(--spacing-xl) clamp(var(--spacing-lg), 5vw, var(--spacing-2xl));
-  background: linear-gradient(150deg, rgba(250, 247, 242, 0.92), var(--color-surface))
+  background:
+      linear-gradient(
+        155deg,
+        rgba(17, 27, 22, 0.95),
+        rgba(28, 53, 45, 0.92)
+      )
       padding-box,
-    linear-gradient(160deg, rgba(181, 154, 90, 0.35), rgba(28, 53, 45, 0.45)) border-box;
+    linear-gradient(160deg, rgba(181, 154, 90, 0.28), rgba(17, 27, 22, 0.75)) border-box;
   border: 1px solid transparent;
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-sm);
@@ -15,12 +21,12 @@
 .heroBackdrop {
   position: absolute;
   inset: -60% -40%;
-  background: radial-gradient(circle at 18% 25%, rgba(250, 247, 242, 0.55), transparent 60%),
-    radial-gradient(circle at 82% 22%, rgba(181, 154, 90, 0.45), transparent 70%),
-    radial-gradient(circle at 60% 74%, rgba(28, 53, 45, 0.35), transparent 75%);
-  filter: blur(75px);
-  opacity: 0.55;
-  mix-blend-mode: screen;
+  background: radial-gradient(circle at 18% 25%, rgba(34, 61, 58, 0.55), transparent 58%),
+    radial-gradient(circle at 82% 22%, rgba(181, 154, 90, 0.4), transparent 68%),
+    radial-gradient(circle at 60% 74%, rgba(12, 20, 16, 0.55), transparent 72%);
+  filter: blur(70px);
+  opacity: 0.5;
+  mix-blend-mode: lighten;
   animation: auroraDrift 32s ease-in-out infinite;
   pointer-events: none;
 }
