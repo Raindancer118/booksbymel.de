@@ -61,6 +61,12 @@ export default function HeroSection({
 
   return (
     <section className={`${styles.hero} container`}>
+      <div aria-hidden="true" className={styles.heroBackdrop} />
+      <div aria-hidden="true" className={styles.orbitalGlow}>
+        <span className={styles.orbital} />
+        <span className={`${styles.orbital} ${styles.orbitalSecondary}`} />
+        <span className={`${styles.orbital} ${styles.orbitalTertiary}`} />
+      </div>
       <div className={styles.layout}>
         <div className={styles.copy}>
           {eyebrow ? <span className={styles.eyebrow}>{eyebrow}</span> : null}
