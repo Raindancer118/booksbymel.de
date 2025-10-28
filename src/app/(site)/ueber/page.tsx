@@ -139,27 +139,24 @@ export default function AboutPage() {
             <article className={styles.bioCard}>
               <h2>Langbio</h2>
               <p className={styles.bioLead}>
-                Mel schreibt Contemporary-Romane, in denen verletzliche Stärke auf zarte
-                Rebellion trifft.
+                Hi, I’m Melanie Thason — a writer with a deep love for stories that stir emotions,
+                explore complex relationships, and don’t shy away from the darker sides of love and
+                life.
               </p>
               <p className={styles.bioParagraph}>
-                Aufgewachsen zwischen Küstennebel und Großstadtlaternen sammelt sie Schauplätze,
-                die nach Salzluft, alten Plattenläden und flirrenden Sommernächten riechen. Nach
-                Stationen in Kulturjournalismus, Marketing und Storytelling-Agenturen wagte Mel den
-                Sprung in die Selbstständigkeit und verknüpft seitdem ihre Erfahrungen mit
-                emotionaler Dramaturgie zu literarischen Welten.
+                I’ve been writing for as long as I can remember, but it took me years to gather the
+                courage to share my words with the world. Now, I create characters that feel real —
+                messy, passionate, flawed, and brave — and I take my readers on journeys that are
+                sometimes painful, sometimes beautiful, but always honest.
               </p>
               <p className={styles.bioParagraph}>
-                Ihre Leser*innen begleitet sie nicht nur durch vielschichtige Charakterstudien, sondern
-                auch hinter die Kulissen: Schreibnächte auf Twitch, exklusive Newsletter-Schnipsel und
-                intime Lesungen in Wohnzimmer-Bookclubs gehören genauso dazu wie Festivalbühnen und
-                Podcast-Interviews.
+                My stories often deal with power dynamics, emotional healing, and the quiet strength it
+                takes to rebuild yourself. I write late at night, usually with a cup of coffee nearby and
+                a cat or two sleeping beside me. That’s when the world feels quiet enough for my
+                characters to speak.
               </p>
               <p className={styles.bioParagraph}>
-                Wenn Mel nicht schreibt, findet man sie an ihrem liebsten Schreibplatz – einem alten
-                Holztisch voller Plotkarten – oder unterwegs für Recherchereisen entlang vergessener
-                Bahnstrecken. Dort lauscht sie den Geschichten anderer, die den Funken für ihre nächsten
-                Romane liefern.
+                Thank you for being here. I hope my books make you feel something real.
               </p>
             </article>
             <aside className={styles.factCard}>
