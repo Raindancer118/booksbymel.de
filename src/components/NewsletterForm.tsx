@@ -42,7 +42,7 @@ export default function NewsletterForm(){
   }
 
   const isLoading = status === "loading";
-  const isDisabled = isLoading || status === "success";
+  const isDisabled = isLoading;
 
   return (
     <form onSubmit={onSubmit} className="grid" style={{gridTemplateColumns:'1fr auto', gap:12}}>
