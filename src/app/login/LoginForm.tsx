@@ -1,6 +1,7 @@
 "use client";
 
 import { useFormState, useFormStatus } from 'react-dom';
+import { usePathname, useSearchParams } from 'next/navigation';
 import styles from './page.module.css';
 
 type FormState = {
@@ -11,6 +12,7 @@ type LoginFormProps = {
   action: (state: FormState, formData: FormData) => Promise<FormState>;
   initialState?: FormState;
   disabled?: boolean;
+  redirectTo?: string;
 };
 
 const defaultInitialState: FormState = {};
@@ -49,12 +51,28 @@ function SubmitButton({ disabled }: SubmitButtonProps) {
   );
 }
 
-export default function LoginForm({ action, initialState, disabled }: LoginFormProps) {
+export default function LoginForm({
+  action,
+  initialState,
+  disabled,
+  redirectTo,
+}: LoginFormProps) {
   const [state, formAction] = useFormState(action, initialState ?? defaultInitialState);
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const fallbackRedirect = (() => {
+    if (redirectTo) {
+      return redirectTo;
+    }
+
+    const search = searchParams?.toString();
+    return search ? `${pathname}?${search}` : pathname;
+  })();
 
   return (
     <main className={styles.container}>
       <form className={styles.form} action={formAction}>
+        <input type="hidden" name="redirectTo" value={fallbackRedirect} />
         <h1 className={styles.heading}>Seite im Aufbau</h1>
         <p className={styles.description}>
           Diese Website befindet sich im Aufbau. Mit dem richtigen Passwort können Sie
