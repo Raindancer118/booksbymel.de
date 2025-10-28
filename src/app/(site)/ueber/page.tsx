@@ -44,10 +44,10 @@ const milestones = [
       "Ein Roman über Nähe und Grenzen – begleitet von einem Hörbuch, Bonuskapiteln und einer Amazon-Lesereise.",
   },
   {
-    year: "2022",
-    title: "Debüt »Nachtblumen«",
+    year: "2023",
+    title: "Dark Romance »The Auctioned Bride«",
     description:
-      "Der erste Contemporary-Roman begeistert Bookstagram und führt zu ersten Lesungen zwischen Hamburg und München.",
+      "Mit Maeve und Damian beginnt meine Reise ins Dark-Romance-Genre – inklusive Amazon-Launch, Special-Edition-Box und Livestream-Lesung.",
   },
   {
     year: "2020",
@@ -66,7 +66,7 @@ const milestones = [
 const quickFacts = [
   { label: "Wohnort", value: "Leipzig, Deutschland" },
   { label: "Lieblings-Plot-Trope", value: "Second Chances & Found Family" },
-  { label: "Aktuelles Projekt", value: "»Gezeitenherz« (Herbst 2025)" },
+  { label: "Aktuelles Projekt", value: "»The Auctioned Bride« Bonuskapitel & Audiobook" },
   { label: "Vertretung", value: "Literaturagentur Abendstern" },
 ];
 
