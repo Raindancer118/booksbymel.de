@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
 import Button from "./Button";
+import ThemeToggle from "./ThemeToggle";
 
 const NAVIGATION_LINKS: Array<{ href: Route; label: string }> = [
   { href: "/buecher", label: "Bücher" },
@@ -80,9 +81,12 @@ export default function Header(){
               );
             })}
           </ul>
-          <Button href="/newsletter" variant="soft">
-            Newsletter
-          </Button>
+          <div className="site-nav__actions">
+            <ThemeToggle className="site-nav__theme-toggle" />
+            <Button href="/newsletter" variant="soft">
+              Newsletter
+            </Button>
+          </div>
         </nav>
       </div>
     </header>
