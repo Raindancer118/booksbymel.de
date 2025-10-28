@@ -2,48 +2,48 @@
   {
     "title": "Ophelia",
     "slug": "ophelia",
-    "tagline": "Ein Mädchen ohne Vergangenheit, eine Stimme, die nur sie hören kann.",
-    "blurb": "Ein Name, den sie sich selbst gegeben hat. Weil er nach Hoffnung klang, als nichts mehr übrig war.",
+    "tagline": "Ein Roman über Depression, Heilung, stille Kämpfe – und die Stärke, sich selbst nicht aufzugeben.",
+    "blurb": "Als Kleinkind ausgesetzt, ohne Erinnerung an ihre Herkunft, wächst Ophelia in wechselnden Heimen und Pflegefamilien auf. Der grüne Schal, den man ihr einst mitgab, bleibt ihr einziger Anker – bis Maximilian in ihr Leben tritt und Hoffnung wieder hörbar macht.",
     "cover": "/images/covers/Ophelia.jpg",
     "isbn": "979-8294727277",
     "publicationDate": "30. Juli 2025",
-    "genres": ["Romantischer Thriller", "Queer Fiction", "Psychologische Spannung"],
-    "readingOrder": "Ophelia-Zyklus · Band 1",
+    "genres": ["Zeitgenössische Belletristik", "Queere Liebesgeschichte", "Mental-Health-Roman"],
+    "readingOrder": "Standalone",
     "synopses": [
       {
-        "title": "Was bleibt",
-        "content": "Ophelia kennt nur die Kälte der Straße und die Stille der Erinnerungslücken. Als sie in einem verlassenen Gewächshaus Zuflucht findet, hört sie plötzlich eine Stimme, die sich Ely nennt – und behauptet, Ophelia beschützen zu können."
+        "title": "Kein Zuhause",
+        "content": "Als Kleinkind ausgesetzt, wächst Ophelia in Heimen auf, die von Gleichgültigkeit und Härte geprägt sind. Nur ein grüner Schal erinnert sie daran, dass sie irgendwann einmal jemandem gehört hat."
       },
       {
-        "title": "Wer jagt",
-        "content": "Ein Serienmörder hinterlässt kryptische Blumengrußkarten, die direkt mit Ophelias verschütteter Vergangenheit verbunden sind. Zusammen mit Ely und der Forensikerin Mara muss sie ihre eigene Geschichte entschlüsseln, bevor der Killer sie findet."
+        "title": "Zwischen Dunkelheit und Licht",
+        "content": "Mit zwanzig steht sie kurz davor, alles hinter sich zu lassen – bis sie Maximilian begegnet. Zum ersten Mal scheint ein anderes Leben möglich, auch wenn die Stimmen der Vergangenheit weiter an ihr zerren."
       },
       {
-        "title": "Was wir sind",
-        "content": "Zwischen Ophelia und Mara entsteht eine zarte, zerbrechliche Nähe. Doch Ely verschwimmt zusehends zwischen imaginärem Freund und etwas Dunklerem. Ophelia muss entscheiden, wem sie vertrauen kann – und welchen Preis ihre Freiheit hat."
+        "title": "Wurzeln finden",
+        "content": "Gemeinsam machen sie sich auf die Suche nach Ophelias Herkunft. Was als Spurensuche beginnt, wird zur Entdeckung dessen, was Familie bedeuten kann – und zur Erkenntnis, dass Hoffnung dort wächst, wo Menschen bleiben."
       }
     ],
     "excerpt": [
-      "Der Regen zeichnete silberne Runen an die Scheiben, während die Stimme wieder in ihrem Kopf aufglomm. \"Du bist nicht allein\", flüsterte Ely. \"Nicht mehr.\"",
-      "Ophelia presste die Finger gegen das Glas. Auf der anderen Seite spiegelte sich ein Mädchen, das sie kaum erkannte – mit Narben, die wie Sternbilder über ihre Haut wanderten, und Augen, die Geschichten verlangten."
+      "Ein Name, den sie sich selbst gegeben hat. Weil er nach Hoffnung klang, als nichts mehr übrig war.",
+      "Der grüne Schal, der sie seit jenem Morgen begleitet, riecht nach Regen und fernem Zuhause. Sie wickelt ihn fester um die Finger, als Maximilian ihr zum ersten Mal zuhört.",
+      "Vielleicht beginnt Familie genau dort, wo Menschen bleiben, obwohl man nichts als seine Narben zu geben hat."
     ],
     "sampleUrl": "/samples/ophelia-probekapitel.txt",
     "formats": [
-      { "format": "Taschenbuch", "details": "352 Seiten" },
-      { "format": "E-Book", "details": "EPUB & Kindle" },
-      { "format": "Hörbuch", "details": "Ungekürzt, gelesen von Helena Sturm" }
+      { "format": "Taschenbuch", "details": "252 Seiten · 11,07 €" },
+      { "format": "E-Book", "details": "EPUB & Kindle" }
     ],
     "retailers": [
-      { "name": "Amazon.de", "url": "https://www.amazon.de/Ophelia-Melanie-Thason/dp/B0FKM5Q4MQ/" },
+      { "name": "Amazon.de", "url": "https://www.amazon.de/dp/9798294727277" },
       { "name": "Thalia", "url": "https://www.thalia.de" }
     ],
     "testimonials": [
       {
-        "quote": "Atmosphärisch, poetisch und messerscharf erzählt – ein Thriller wie eine Dämmerung.",
+        "quote": "Ophelias Weg zeigt, wie laut stille Kämpfe sein können – und dass Hoffnung sich lernen lässt.",
         "source": "Buchblog \"Zwischen den Zeilen\""
       },
       {
-        "quote": "Ophelia und Mara haben mir das Herz gebrochen und wieder zusammengesetzt.",
+        "quote": "Dieses Buch schenkt Licht, ohne die Dunkelheit zu verleugnen.",
         "source": "Leserin Jana L.",
         "role": "Frühe Testleserin"
       }
