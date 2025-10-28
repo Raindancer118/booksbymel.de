@@ -29,16 +29,14 @@ function resolveRedirectTarget(fromParam: string | string[] | undefined): string
 }
 
 export default async function LoginPage({ searchParams }: LoginPageProps) {
-  const secret = process.env.PWT_ACC;
-
-  if (!secret) {
-    throw new Error('Authentication is not configured.');
-  }
-
+  const secret = process.env.PWT_ACC ?? null;
   const redirectTarget = resolveRedirectTarget(searchParams?.from);
   const cookieStore = cookies();
   const existingToken = cookieStore.get(AUTH_COOKIE_NAME)?.value;
-  const isAuthenticated = await verifySessionToken(existingToken, secret);
+  const isAuthenticated =
+    secret && existingToken
+      ? await verifySessionToken(existingToken, secret)
+      : false;
 
   if (isAuthenticated) {
     redirect(redirectTarget);
@@ -46,6 +44,10 @@ export default async function LoginPage({ searchParams }: LoginPageProps) {
 
   async function authenticate(_: FormState, formData: FormData): Promise<FormState> {
     'use server';
+
+    if (!secret) {
+      return { error: 'Die Anmeldung ist derzeit nicht verfügbar.' };
+    }
 
     const password = formData.get('password');
 
@@ -73,5 +75,9 @@ export default async function LoginPage({ searchParams }: LoginPageProps) {
     redirect(redirectTarget);
   }
 
-  return <LoginForm action={authenticate} />;
+  const initialState = secret
+    ? undefined
+    : { error: 'Die Anmeldung ist derzeit nicht verfügbar.' };
+
+  return <LoginForm action={authenticate} initialState={initialState} disabled={!secret} />;
 }
