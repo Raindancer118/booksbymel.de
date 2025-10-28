@@ -1,56 +1,56 @@
 :root {
-  /* Emerald & forest spectrum */
-  --color-emerald-50: #f4f7f5;
-  --color-emerald-100: #e4ede9;
-  --color-emerald-200: #cddcd4;
-  --color-emerald-300: #a9c5b7;
-  --color-emerald-400: #80ac97;
-  --color-emerald-500: #5a8f7a;
-  --color-emerald-600: #3c7160;
-  --color-emerald-700: #2a594b;
-  --color-emerald-800: #1d4036;
-  --color-emerald-900: #142a24;
+  /* Forest anchor spectrum */
+  --color-emerald-50: #faf7f2;
+  --color-emerald-100: #f3eee6;
+  --color-emerald-200: #e4e1d6;
+  --color-emerald-300: #cfd2c1;
+  --color-emerald-400: #acb8a4;
+  --color-emerald-500: #869f8b;
+  --color-emerald-600: #5f8372;
+  --color-emerald-700: #43685a;
+  --color-emerald-800: #223d3a;
+  --color-emerald-900: #1c352d;
 
   /* Golden accent spectrum */
-  --color-gold-50: #fbf6eb;
-  --color-gold-100: #f3e5c4;
-  --color-gold-200: #e8d19a;
-  --color-gold-300: #ddba77;
-  --color-gold-400: #d1a55b;
-  --color-gold-500: #c4943f;
-  --color-gold-600: #a87534;
-  --color-gold-700: #8a592a;
-  --color-gold-800: #6c4222;
-  --color-gold-900: #4a2c17;
+  --color-gold-50: #f8f1e3;
+  --color-gold-100: #efe0c2;
+  --color-gold-200: #e2ca9c;
+  --color-gold-300: #d3b37a;
+  --color-gold-400: #c19f63;
+  --color-gold-500: #b59a5a;
+  --color-gold-600: #9d844d;
+  --color-gold-700: #7f693e;
+  --color-gold-800: #5f4d2f;
+  --color-gold-900: #3f311f;
 
-  --color-ophelia-green: var(--color-emerald-500);
-  --color-ophelia-green-dark: var(--color-emerald-800);
+  --color-ophelia-green: var(--color-emerald-700);
+  --color-ophelia-green-dark: var(--color-emerald-900);
 
   /* Neutral grays */
-  --color-neutral-50: #f8f7f5;
-  --color-neutral-100: #efede9;
-  --color-neutral-200: #ded9d2;
-  --color-neutral-300: #c5beb5;
-  --color-neutral-400: #a89f95;
-  --color-neutral-500: #8a8075;
-  --color-neutral-600: #6f665c;
-  --color-neutral-700: #585048;
-  --color-neutral-800: #403a34;
-  --color-neutral-900: #27231f;
+  --color-neutral-50: #faf7f2;
+  --color-neutral-100: #efeae2;
+  --color-neutral-200: #dfd9cf;
+  --color-neutral-300: #c5beb1;
+  --color-neutral-400: #aba297;
+  --color-neutral-500: #91887e;
+  --color-neutral-600: #766e66;
+  --color-neutral-700: #5d554f;
+  --color-neutral-800: #433d38;
+  --color-neutral-900: #2b2723;
 
   /* Core surfaces */
-  --color-bg: var(--color-emerald-50);
-  --color-bg-muted: #ecf1ed;
-  --color-surface: #fcfcfa;
-  --color-surface-muted: #f1f4f0;
-  --color-surface-contrast: #16251d;
+  --color-bg: #faf7f2;
+  --color-bg-muted: #f1ece4;
+  --color-surface: #ffffff;
+  --color-surface-muted: #f4efe6;
+  --color-surface-contrast: #1c352d;
 
   /* Text & accents */
-  --color-text: #1f2822;
-  --color-text-muted: #56665c;
-  --color-accent: var(--color-gold-400);
-  --color-accent-soft: rgba(213, 180, 108, 0.2);
-  --color-accent-contrast: #1e2219;
+  --color-text: #333333;
+  --color-text-muted: #5d6963;
+  --color-accent: var(--color-gold-500);
+  --color-accent-soft: rgba(181, 154, 90, 0.18);
+  --color-accent-contrast: #1c352d;
   --muted: var(--color-text-muted);
 
   /* Radii & elevations */
@@ -92,16 +92,16 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --color-bg: #0f1915;
-    --color-bg-muted: #162721;
-    --color-surface: #182e25;
-    --color-surface-muted: #1e382d;
-    --color-surface-contrast: #f4f6f4;
-    --color-text: #f3f1ed;
-    --color-text-muted: #b9c3bb;
-    --color-accent: #e6c774;
-    --color-accent-soft: rgba(230, 199, 116, 0.2);
-    --color-accent-contrast: #14160f;
+    --color-bg: #101b17;
+    --color-bg-muted: #152521;
+    --color-surface: #1a2f29;
+    --color-surface-muted: #213a33;
+    --color-surface-contrast: #f4f1ea;
+    --color-text: #f4f1ea;
+    --color-text-muted: #c3cec7;
+    --color-accent: #d8bb78;
+    --color-accent-soft: rgba(216, 187, 120, 0.22);
+    --color-accent-contrast: #151d18;
     --muted: var(--color-text-muted);
     --shadow-sm: 0 16px 44px rgba(0, 0, 0, 0.45);
     --shadow-md: 0 28px 68px rgba(0, 0, 0, 0.56);
