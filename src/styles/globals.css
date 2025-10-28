@@ -105,6 +105,10 @@ textarea {
   overflow: hidden;
 }
 
+.site-header[data-nav-open="true"] {
+  overflow: visible;
+}
+
 .site-header::after {
   content: "";
   position: absolute;
@@ -548,6 +552,7 @@ textarea {
     align-items: stretch;
     gap: var(--spacing-md);
     display: none;
+    z-index: 2;
   }
 
   .site-nav[data-open="true"] {
