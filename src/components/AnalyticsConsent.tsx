@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Script from "next/script";
 
 const STORAGE_KEY = "booksbymel.analytics-consent";
@@ -11,6 +11,68 @@ const measurementId = (
 type ConsentState = "unknown" | "accepted" | "declined";
 
 type StoredConsent = Extract<ConsentState, "accepted" | "declined">;
+
+type DataLayerEntry = Record<string, unknown> | unknown[];
+
+declare global {
+  interface Window {
+    dataLayer: DataLayerEntry[];
+  }
+}
+
+function pushConsentAcceptanceEvents() {
+  if (typeof window === "undefined") {
+    return;
+  }
+
+  const globalWindow = window as typeof window & {
+    dataLayer?: DataLayerEntry[];
+  };
+
+  if (!Array.isArray(globalWindow.dataLayer)) {
+    globalWindow.dataLayer = [];
+  }
+
+  const { dataLayer } = globalWindow;
+
+  const highestUniqueId = dataLayer.reduce((max, entry) => {
+    if (
+      entry &&
+      typeof entry === "object" &&
+      !Array.isArray(entry) &&
+      "gtm.uniqueEventId" in entry
+    ) {
+      const uniqueId = (entry as Record<string, unknown>)[
+        "gtm.uniqueEventId"
+      ];
+
+      if (typeof uniqueId === "number" && Number.isFinite(uniqueId)) {
+        return Math.max(max, uniqueId);
+      }
+    }
+
+    return max;
+  }, 0);
+
+  let nextUniqueId = highestUniqueId + 1;
+
+  dataLayer.push({
+    event: "gtm.init_consent",
+    ["gtm.uniqueEventId"]: nextUniqueId++,
+  });
+
+  dataLayer.push({
+    event: "gtm.init",
+    ["gtm.uniqueEventId"]: nextUniqueId++,
+  });
+
+  dataLayer.push({
+    event: "gtm.js",
+    ["gtm.start"]: Date.now(),
+    ["gtm.uniqueEventId"]: nextUniqueId++,
+    ["gtm.priorityId"]: undefined,
+  });
+}
 
 function readStoredConsent(): StoredConsent | null {
   if (typeof window === "undefined") {
@@ -45,6 +107,7 @@ function storeConsent(value: StoredConsent) {
 export default function AnalyticsConsent() {
   const [consent, setConsent] = useState<ConsentState>("unknown");
   const [isReady, setIsReady] = useState(false);
+  const hasPushedConsentEventsRef = useRef(false);
 
   useEffect(() => {
     const storedConsent = readStoredConsent();
@@ -68,6 +131,13 @@ export default function AnalyticsConsent() {
 
   const shouldRenderBanner = isReady && consent === "unknown";
   const shouldLoadAnalytics = consent === "accepted" && measurementId.length > 0;
+
+  useEffect(() => {
+    if (consent === "accepted" && !hasPushedConsentEventsRef.current) {
+      pushConsentAcceptanceEvents();
+      hasPushedConsentEventsRef.current = true;
+    }
+  }, [consent]);
 
   return (
     <>
