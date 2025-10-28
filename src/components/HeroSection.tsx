@@ -1,9 +1,19 @@
 import Image from "next/image";
 import Link from "next/link";
+import type { ComponentPropsWithoutRef } from "react";
 import styles from "./HeroSection.module.css";
 import FloatingLeaves from "./FloatingLeaves";
 
-type Cta = { label: string; href: string };
+type LinkHref = ComponentPropsWithoutRef<typeof Link>["href"];
+
+type Cta = { label: string; href: LinkHref | string };
+
+function isInternalHref(href: Cta["href"]): href is LinkHref {
+  if(typeof href === "string"){
+    return href.startsWith("/");
+  }
+  return true;
+}
 
 type StatChip = {
   label: string;
@@ -34,6 +44,22 @@ export default function HeroSection({
   stats,
   heroImage,
 }: HeroSectionProps) {
+  const renderCta = (cta: Cta, className: string) => {
+    if(isInternalHref(cta.href)){
+      return (
+        <Link className={className} href={cta.href}>
+          {cta.label}
+        </Link>
+      );
+    }
+
+    return (
+      <a className={className} href={cta.href}>
+        {cta.label}
+      </a>
+    );
+  };
+
   return (
     <section className={`${styles.hero} container`}>
       <FloatingLeaves className={styles.leafLayer} />
@@ -43,14 +69,8 @@ export default function HeroSection({
           <h1 className={styles.headline}>{headline}</h1>
           <p className={styles.tagline}>{tagline}</p>
           <div className={styles.ctas}>
-            <Link className="button" href={primaryCta.href}>
-              {primaryCta.label}
-            </Link>
-            {secondaryCta ? (
-              <Link className="button ghost" href={secondaryCta.href}>
-                {secondaryCta.label}
-              </Link>
-            ) : null}
+            {renderCta(primaryCta, "button")}
+            {secondaryCta ? renderCta(secondaryCta, "button ghost") : null}
           </div>
           {stats?.length ? (
             <ul className={styles.stats} aria-label="Highlights">

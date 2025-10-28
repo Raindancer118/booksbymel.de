@@ -1,12 +1,13 @@
 "use client";
 
+import type { Route } from "next";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
 import Button from "./Button";
 
-const NAVIGATION_LINKS = [
+const NAVIGATION_LINKS: Array<{ href: Route; label: string }> = [
   { href: "/buecher", label: "Bücher" },
   { href: "/ueber", label: "Über" },
   { href: "/events", label: "Events" },
