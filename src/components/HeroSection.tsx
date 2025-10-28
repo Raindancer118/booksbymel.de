@@ -2,7 +2,6 @@ import Image from "next/image";
 import Link from "next/link";
 import type { ComponentPropsWithoutRef } from "react";
 import styles from "./HeroSection.module.css";
-import FloatingLeaves from "./FloatingLeaves";
 
 type LinkHref = ComponentPropsWithoutRef<typeof Link>["href"];
 
@@ -62,7 +61,6 @@ export default function HeroSection({
 
   return (
     <section className={`${styles.hero} container`}>
-      <FloatingLeaves className={styles.leafLayer} />
       <div className={styles.layout}>
         <div className={styles.copy}>
           {eyebrow ? <span className={styles.eyebrow}>{eyebrow}</span> : null}
@@ -70,7 +68,7 @@ export default function HeroSection({
           <p className={styles.tagline}>{tagline}</p>
           <div className={styles.ctas}>
             {renderCta(primaryCta, "button")}
-            {secondaryCta ? renderCta(secondaryCta, "button ghost") : null}
+            {secondaryCta ? renderCta(secondaryCta, "button button--ghost") : null}
           </div>
           {stats?.length ? (
             <ul className={styles.stats} aria-label="Highlights">
@@ -83,14 +81,13 @@ export default function HeroSection({
             </ul>
           ) : null}
         </div>
-        <div className={`card ${styles.mediaCard}`}>
+        <div className={styles.media}>
           <Image
-            className={styles.media}
             src={heroImage.src}
             alt={heroImage.alt}
             width={heroImage.width ?? 600}
             height={heroImage.height ?? 720}
-            sizes="(max-width: 768px) 100vw, 540px"
+            sizes="(max-width: 768px) 100vw, 480px"
             priority
           />
         </div>

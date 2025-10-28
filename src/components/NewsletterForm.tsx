@@ -1,4 +1,4 @@
-'use client';
+"use client";
 import { useState } from "react";
 
 type Status = "idle" | "loading" | "success" | "error";
@@ -45,7 +45,7 @@ export default function NewsletterForm(){
   const isDisabled = isLoading;
 
   return (
-    <form onSubmit={onSubmit} className="grid" style={{gridTemplateColumns:'1fr auto', gap:12}}>
+    <form onSubmit={onSubmit} className="newsletter-form">
       <label className="sr-only" htmlFor="email">E-Mail</label>
       <input
         id="email"
@@ -54,18 +54,19 @@ export default function NewsletterForm(){
         value={email}
         onChange={(e)=>setEmail(e.target.value)}
         placeholder="dein.name@mail.de"
-        style={{padding:'12px 14px', borderRadius:'12px', border:'1px solid #0001'}}
+        className="newsletter-form__input"
         aria-invalid={status === "error"}
         aria-describedby={error ? "newsletter-error" : undefined}
       />
       <button className="button" type="submit" disabled={isDisabled} aria-busy={isLoading}>
         {isLoading ? "Wird gesendet…" : "Anmelden"}
       </button>
-      <small style={{gridColumn:'1 / -1', color:'var(--muted)'}}>
-        Wir speichern E-Mail & Zeitstempel deiner Einwilligung und senden sie zur Double-Opt-In-Verarbeitung an unseren Versanddienstleister. Abmeldung ist jederzeit möglich.
+      <small className="newsletter-form__hint">
+        Wir speichern E-Mail & Zeitstempel deiner Einwilligung und senden sie zur Double-Opt-In-Verarbeitung an
+        unseren Versanddienstleister. Abmeldung ist jederzeit möglich.
       </small>
       {error ? (
-        <p id="newsletter-error" role="alert" style={{gridColumn:'1 / -1', color:'var(--danger, #b00020)'}}>
+        <p id="newsletter-error" role="alert" className="newsletter-form__error">
           {error}
         </p>
       ) : null}
