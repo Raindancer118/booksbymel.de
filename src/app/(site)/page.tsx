@@ -3,7 +3,7 @@ import HeroSection from "@/components/HeroSection";
 import BookCard from "@/components/BookCard";
 import NewsletterForm from "@/components/NewsletterForm";
 import Seo from "@/components/Seo";
-import FloatingLeaves from "@/components/FloatingLeaves";
+import EventList from "@/components/EventList";
 import { getBooks } from "@/lib/books";
 import { getEvents } from "@/lib/events";
 import styles from "./page.module.css";
@@ -103,8 +103,6 @@ export default function HomePage() {
     },
   ];
 
-  const marqueeItems = [...testimonials, ...testimonials];
-
   return (
     <>
       <Seo
@@ -133,7 +131,7 @@ export default function HomePage() {
         }}
       />
 
-      <section className={`container ${styles.section} ${styles.revealUp}`}>
+      <section className={`container ${styles.section}`}>
         <div className={styles.split}>
           <div className={styles.spotlightImageWrapper}>
             <Image
@@ -168,7 +166,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className={`container ${styles.section} ${styles.revealUp} ${styles.revealDelaySm}`}>
+      <section className={`container ${styles.section}`}>
         <div className={styles.sectionHeader}>
           <p>Neu & empfohlen</p>
           <h2>Frisch im Regal</h2>
@@ -180,40 +178,34 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className={`container ${styles.section} ${styles.revealUp} ${styles.revealDelayMd}`}>
+      <section className={`container ${styles.section}`}>
         <div className={styles.sectionHeader}>
           <p>Leserstimmen</p>
           <h2>Was andere sagen</h2>
         </div>
-        <div className={styles.marquee}>
-          <div className={styles.marqueeTrack}>
-            {marqueeItems.map((testimonial, index) => (
-              <figure
-                key={`${testimonial.name}-${index}`}
-                className={styles.marqueeItem}
-                aria-label={`Zitat von ${testimonial.name}`}
-              >
-                <blockquote>„{testimonial.quote}“</blockquote>
-                <figcaption>
-                  <span>{testimonial.name}</span>
-                  {testimonial.role ? <span className={styles.role}> · {testimonial.role}</span> : null}
-                </figcaption>
-              </figure>
-            ))}
-          </div>
-        </div>
+        <ul className={styles.testimonialList}>
+          {testimonials.map((testimonial) => (
+            <li key={testimonial.name} className={styles.testimonialCard}>
+              <blockquote>„{testimonial.quote}“</blockquote>
+              <p className={styles.testimonialMeta}>
+                {testimonial.name}
+                {testimonial.role ? <span> · {testimonial.role}</span> : null}
+              </p>
+            </li>
+          ))}
+        </ul>
       </section>
 
-      <section className={`container ${styles.section} ${styles.revealUp} ${styles.revealDelayLg}`}>
+      <section className={`container ${styles.section}`}>
         <div className={styles.sectionHeader}>
           <p>Termine</p>
           <h2>Bevorstehende Events</h2>
         </div>
+        <EventList />
       </section>
 
-      <section className={`container ${styles.section} ${styles.revealUp}`}>
+      <section className={`container ${styles.section}`}>
         <div className={styles.newsletterCta}>
-          <FloatingLeaves className={styles.newsletterLeaves} />
           <div className={styles.newsletterCopy}>
             <span className={styles.kicker}>Immer up to date</span>
             <h2>Newsletter abonnieren</h2>

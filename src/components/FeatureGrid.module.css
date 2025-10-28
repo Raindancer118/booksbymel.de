@@ -1,33 +1,35 @@
 .grid {
   display: grid;
-  gap: clamp(1rem, 2vw, 1.75rem);
+  gap: var(--spacing-lg);
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
 }
 
 .item {
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(0, 0, 0, 0.06);
-  border-radius: var(--radius);
-  padding: clamp(1rem, 2vw, 1.5rem);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-md);
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: var(--spacing-sm);
+  box-shadow: var(--shadow-sm);
 }
 
 .title {
   font-weight: 600;
   margin: 0;
+  color: var(--color-heading);
 }
 
 .description {
   margin: 0;
   color: var(--muted);
-  line-height: 1.5;
+  line-height: 1.6;
 }
 
 .eyebrow {
-  font-size: 0.85rem;
+  font-size: 0.75rem;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--muted);
+  letter-spacing: 0.12em;
+  color: var(--color-accent);
 }

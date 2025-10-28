@@ -46,7 +46,7 @@ export default function BookCard({ book }: { book: Book }) {
           {/* ✅ String-URL, keine { pathname, query }-Objektform */}
           <Link className="button" href={href as any}>Mehr</Link>
           <Link
-            className="button ghost"
+            className="button button--ghost"
             href={firstRetailer.startsWith("http") ? firstRetailer : "#" as any}
           >
             Kaufen
